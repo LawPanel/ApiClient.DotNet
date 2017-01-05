@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6DB7BDE8-6980-4642-B571-8B3CD1A5E910}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LawPanel.ApiClient</RootNamespace>
+    <AssemblyName>LawPanel.ApiClient</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TMD|AnyCPU'">
+    <OutputPath>bin\TMD\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Abstractions\Base\DataTables\DataTablesColumn.cs" />
+    <Compile Include="Abstractions\Base\DataTables\DataTablesColumnSearch.cs" />
+    <Compile Include="Abstractions\Base\DataTables\DataTablesOrder.cs" />
+    <Compile Include="Abstractions\Base\DataTables\DataTablesRowData.cs" />
+    <Compile Include="Abstractions\Base\DataTables\DataTablesSearch.cs" />
+    <Compile Include="Abstractions\Base\DataTables\DataTablesServerSideResponse.cs" />
+    <Compile Include="Abstractions\Base\Dto.cs" />
+    <Compile Include="Abstractions\Base\PaginableDto.cs" />
+    <Compile Include="Abstractions\Base\ResultDto.cs" />
+    <Compile Include="Abstractions\Base\ResultDtoWith.cs" />
+    <Compile Include="Abstractions\Interfaces\IIdentifiableDto.cs" />
+    <Compile Include="Abstractions\Interfaces\IPaginableDto.cs" />
+    <Compile Include="Constants\Auth.cs" />
+    <Compile Include="Constants\ImageUrlAttribute.cs" />
+    <Compile Include="Enums\PermissionType.cs" />
+    <Compile Include="Enums\ScheduledCommunicationState.cs" />
+    <Compile Include="Enums\SearchStatus.cs" />
+    <Compile Include="Enums\SearchType.cs" />
+    <Compile Include="Enums\TrademarkRegistry.cs" />
+    <Compile Include="Enums\UserRole.cs" />
+    <Compile Include="Enums\WatchingServiceStatus.cs" />
+    <Compile Include="Extensions\HttpClientExt.cs" />
+    <Compile Include="Extensions\HttpContentExt.cs" />
+    <Compile Include="Extensions\ListFrequencyDtoExt.cs" />
+    <Compile Include="Extensions\ListStringExt.cs" />
+    <Compile Include="Extensions\ObjExt.cs" />
+    <Compile Include="Extensions\StringExt.cs" />
+    <Compile Include="ILawPanelClient.cs" />
+    <Compile Include="LawPanelClient.cs" />
+    <Compile Include="Models\Account\AuthCookieModel.cs" />
+    <Compile Include="Models\Account\LoginBindingModel.cs" />
+    <Compile Include="Models\Account\SendCodeBindingModel.cs" />
+    <Compile Include="Models\Account\TwoFactorAuthenticationProviderDto.cs" />
+    <Compile Include="Models\Account\VerifyCodeBoundingModel.cs" />
+    <Compile Include="Models\BrandMonitoring\BrandMonitoringConfigDto.cs" />
+    <Compile Include="Models\BrandMonitoring\BrandMonitoringResultDto.cs" />
+    <Compile Include="Models\ClientDto.cs" />
+    <Compile Include="Models\Clients\ClientUserDto.cs" />
+    <Compile Include="Models\Common\DeleteDto.cs" />
+    <Compile Include="Models\Common\ReadDto.cs" />
+    <Compile Include="Models\Communications\CommunicationRecordDto.cs" />
+    <Compile Include="Models\ContactInfo\ContactInfoComponentDefinitionDto.cs" />
+    <Compile Include="Models\ContactInfo\ContactInfoDefinitionDto.cs" />
+    <Compile Include="Models\ContactInfo\ContactInfoDetailDto.cs" />
+    <Compile Include="Models\ContactInfo\ContactInfoDto.cs" />
+    <Compile Include="Models\ContactInfo\ContactInfoReadDto.cs" />
+    <Compile Include="Models\ContactInfo\ContactInfoOriginDto.cs" />
+    <Compile Include="Models\FirmsContactInfo\SearchEmailLeadDto.cs" />
+    <Compile Include="Models\FirmStatistics\ClassNumbersRequested.cs" />
+    <Compile Include="Models\FirmStatistics\DashboardStatisticsModel.cs" />
+    <Compile Include="Models\FirmStatistics\SearchesByDate.cs" />
+    <Compile Include="Models\Firms\FirmClientDto.cs" />
+    <Compile Include="Models\Firms\FirmContactInfoes\FirmContactInfoDto.cs" />
+    <Compile Include="Models\Firms\FirmSearch\FirmSearchDto.cs" />
+    <Compile Include="Models\Firms\FirmUiSettingsDto.cs" />
+    <Compile Include="Models\Firms\FirmUserDto.cs" />
+    <Compile Include="Models\Firms\FirmWidgetSettingsSearchDomainDto.cs" />
+    <Compile Include="Models\Firms\FirmDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\CsvImporter\FirmPortfolioCsvDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\CsvImporter\FirmPortfolioImportLineResult.cs" />
+    <Compile Include="Models\Firms\Portfolio\FirmPortfolioBundle.cs" />
+    <Compile Include="Models\Firms\Portfolio\FirmPortfolioDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\CsvImporter\FirmPortfolioImportFromCsvResultDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\FirmPortfolioReminderDto.cs" />
+    <Compile Include="Models\Firms\Sales\FirmProductFilters\FirmProductFilterCombinationsDto.cs" />
+    <Compile Include="Models\Firms\Sales\FirmProductFilters\FirmProductFilterCreateDto.cs" />
+    <Compile Include="Models\Firms\Sales\FirmProductFilters\FirmProductFilterDto.cs" />
+    <Compile Include="Models\Firms\Sales\FirmProductFilters\FirmProductFilterReadDto.cs" />
+    <Compile Include="Models\Firms\Sales\FirmProductFilters\FirmProductFilterUpdateDto.cs" />
+    <Compile Include="Models\Firms\Sales\FirmProducts\FirmProductCreateDto.cs" />
+    <Compile Include="Models\Firms\Sales\FirmProducts\FirmProductDto.cs" />
+    <Compile Include="Models\Firms\Sales\FirmProducts\FirmProductReadDto.cs" />
+    <Compile Include="Models\Firms\Sales\FirmProducts\FirmProductUpdateDto.cs" />
+    <Compile Include="Models\Firms\Widgets\Sales\FirmWidgetSaleUpdateDto.cs" />
+    <Compile Include="Models\Firms\Widgets\Sales\FirmWidgetSaleCreateDto.cs" />
+    <Compile Include="Models\Firms\Widgets\Sales\FirmWidgetSaleReadDto.cs" />
+    <Compile Include="Models\Firms\Widgets\Sales\FirmWidgetSalesCalculateDto.cs" />
+    <Compile Include="Models\Sales\CurrencyCotizationDto.cs" />
+    <Compile Include="Models\Sales\CurrencyDto.cs" />
+    <Compile Include="Models\Sales\FirmWidgetSalesSettingsDto.cs" />
+    <Compile Include="Models\Sales\PriceDto.cs" />
+    <Compile Include="Models\Sales\ProductFilterDetailDto.cs" />
+    <Compile Include="Models\Sales\ProductFilterDto.cs" />
+    <Compile Include="Models\Sales\ProductFilterTemplateReadDto.cs" />
+    <Compile Include="Models\Sales\ProductFilterTemplateDto.cs" />
+    <Compile Include="Models\Sales\ProductModifierDefinitionDto.cs" />
+    <Compile Include="Models\Sales\ProductModifierDto.cs" />
+    <Compile Include="Models\Sales\ProductModifierGroupDto.cs" />
+    <Compile Include="Models\Sales\ProductDto.cs" />
+    <Compile Include="Models\Firms\Widgets\Sales\FirmWidgetSaleDto.cs" />
+    <Compile Include="Models\Firms\Widgets\Searches\FirmWidgetSettingsSearchDto.cs" />
+    <Compile Include="Models\FrequencyDto.cs" />
+    <Compile Include="Models\GoodAndServiceDto.cs" />
+    <Compile Include="Models\Helpers\CountryDto.cs" />
+    <Compile Include="Models\Helpers\LanguageDto.cs" />
+    <Compile Include="Models\HubNotifications\NotificationFromHub.cs" />
+    <Compile Include="Models\HubNotifications\NotificationFromHubData.cs" />
+    <Compile Include="Models\IdentityDto.cs" />
+    <Compile Include="Models\Registry\RegistryDto.cs" />
+    <Compile Include="Models\Reminders\ReminderBaseModel.cs" />
+    <Compile Include="Models\Reminders\ReminderDto.cs" />
+    <Compile Include="Models\Sales\ProductTypeDto.cs" />
+    <Compile Include="Models\Sales\TaxDto.cs" />
+    <Compile Include="Models\ScheduledCommunications\ScheduledCommunicationDto.cs" />
+    <Compile Include="Models\ScheduledCommunications\ScheduledCommunicationReadDto.cs" />
+    <Compile Include="Models\SearchClass\SearchClassDto.cs" />
+    <Compile Include="Models\SearchDto.cs" />
+    <Compile Include="Models\SearchOrigins\SearchOriginDto.cs" />
+    <Compile Include="Models\SearchQuery.cs" />
+    <Compile Include="Models\SearchResultDto.cs" />
+    <Compile Include="Models\Templates\BootstrapTrees\BootstrapTreeLeaf.cs" />
+    <Compile Include="Models\Templates\BootstrapTrees\BootstrapTreeLeafState.cs" />
+    <Compile Include="Models\Templates\TemplateDto.cs" />
+    <Compile Include="Models\TrademarkReadDto.cs" />
+    <Compile Include="Models\TrademarkDto.cs" />
+    <Compile Include="Models\User\UserDto.cs" />
+    <Compile Include="Models\User\UserLoginDetailsDto.cs" />
+    <Compile Include="Models\User\UserSettingsDto.cs" />
+    <Compile Include="Models\Watchings\WatchingBundleDto.cs" />
+    <Compile Include="Models\Watchings\WatchingDto.cs" />
+    <Compile Include="Models\Watchings\WatchingSearch.cs" />
+    <Compile Include="Models\Watchings\WatchingUserSettingsDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proxy\Proxy.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Firms\FirmClients\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
