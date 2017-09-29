@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using LawPanel.ApiClient.Abstractions.Base;
 
 namespace LawPanel.ApiClient.Models.Firms.Widgets.Sales
 {

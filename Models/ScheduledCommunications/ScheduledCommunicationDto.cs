@@ -1,7 +1,6 @@
 ﻿using System;
-using LawPanel.ApiClient.Abstractions.Base;
-using LawPanel.ApiClient.Abstractions.Interfaces;
 using LawPanel.ApiClient.Enums;
+using LawPanel.ApiClient.Interfaces;
 
 namespace LawPanel.ApiClient.Models.ScheduledCommunications
 {
@@ -21,5 +20,21 @@ namespace LawPanel.ApiClient.Models.ScheduledCommunications
         public string                       ExtraParam              { get; set; } // Aux, used to store and recover records. I.e.: FirmPortfolioId with reminders
         public ScheduledCommunicationState  State                   { get; set; }
         public bool                         ForceSystemAsRemitent   { get; set; } // When true communication should be send with SystemCommunicator as remitent
+        public string                       PartitionKey            { get; set; }
+        public string                       RowKey                  { get; set; }
+
+
+        public override string ToString()
+        {
+            return $"DateTimeToSend: {DateTimeToSend} \n" +
+                   $"Emisor: {Emisor} \n" +
+                   $"EmisorId: {EmisorId} \n" +
+                   $"Receptor: {Receptor} \n" +
+                   $"ReceptorId: {ReceptorId} \n" +
+                   $"Params: {Params} \n" +
+                   $"ExtraParam: {ExtraParam} \n" +
+                   $"PartitionKey: {PartitionKey} \n" +
+                   $"RowKey: {RowKey} \n";
+        }
     }
 }

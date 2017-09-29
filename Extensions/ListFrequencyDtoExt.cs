@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using LawPanel.ApiClient.Models;
+using LawPanel.ApiClient.Models.Helpers;
 
 namespace LawPanel.ApiClient.Extensions
 {

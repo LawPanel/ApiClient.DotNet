@@ -1,12 +1,11 @@
-﻿using LawPanel.ApiClient.Abstractions.Base;
-using LawPanel.ApiClient.Abstractions.Interfaces;
+﻿using LawPanel.ApiClient.Interfaces;
 
 namespace LawPanel.ApiClient.Models.Firms.Sales.FirmProducts
 {
     public class FirmProductReadDto : Dto, IIdentifiableDto
     {
         public string   Id              { get; set; }
-        public int      Code            { get; set; }
+        public string   Code            { get; set; }
         public string   Name            { get; set; }
         public string   NamePublic      { get; set; }
         public string   CurrencySymbol  { get; set; }

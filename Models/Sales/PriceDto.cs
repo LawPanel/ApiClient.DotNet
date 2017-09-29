@@ -1,6 +1,6 @@
 ﻿using System;
-using LawPanel.ApiClient.Abstractions.Base;
-using LawPanel.ApiClient.Abstractions.Interfaces;
+using LawPanel.ApiClient.Interfaces;
+using LawPanel.ApiClient.Models.Sales.Currencies;
 
 namespace LawPanel.ApiClient.Models.Sales
 {

@@ -1,5 +1,4 @@
-﻿using LawPanel.ApiClient.Abstractions.Base;
-using LawPanel.ApiClient.Abstractions.Interfaces;
+﻿using LawPanel.ApiClient.Interfaces;
 
 namespace LawPanel.ApiClient.Models.Reminders
 {
@@ -22,5 +21,9 @@ namespace LawPanel.ApiClient.Models.Reminders
         public string   EntityAssociatedType        { get; set; }
 
         public string   Notes                       { get; set; }
+
+        public string   PartitionKey                { get; set; }
+        public string   RowKey                      { get; set; }
+        public string   Table                       { get; set; }
     }
 }

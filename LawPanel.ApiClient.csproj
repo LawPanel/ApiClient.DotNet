@@ -38,24 +38,42 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TMD|AnyCPU'">
-    <OutputPath>bin\TMD\</OutputPath>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Dev\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\Base\DataTables\DataTablesColumn.cs" />
-    <Compile Include="Abstractions\Base\DataTables\DataTablesColumnSearch.cs" />
-    <Compile Include="Abstractions\Base\DataTables\DataTablesOrder.cs" />
-    <Compile Include="Abstractions\Base\DataTables\DataTablesRowData.cs" />
-    <Compile Include="Abstractions\Base\DataTables\DataTablesSearch.cs" />
-    <Compile Include="Abstractions\Base\DataTables\DataTablesServerSideResponse.cs" />
-    <Compile Include="Abstractions\Base\Dto.cs" />
-    <Compile Include="Abstractions\Base\PaginableDto.cs" />
-    <Compile Include="Abstractions\Base\ResultDto.cs" />
-    <Compile Include="Abstractions\Base\ResultDtoWith.cs" />
-    <Compile Include="Abstractions\Interfaces\IIdentifiableDto.cs" />
-    <Compile Include="Abstractions\Interfaces\IPaginableDto.cs" />
+    <Compile Include="Exceptions\LawPanelException.cs" />
+    <Compile Include="Extensions\DtoExt.cs" />
+    <Compile Include="Extensions\FileDtoExt.cs" />
+    <Compile Include="Extensions\FileUpdateDtoExt.cs" />
+    <Compile Include="Models\Communications\CommunicationChannelDto.cs" />
+    <Compile Include="Models\DataTables\DataTablesColumn.cs" />
+    <Compile Include="Models\DataTables\DataTablesColumnSearch.cs" />
+    <Compile Include="Models\DataTables\DataTablesOrder.cs" />
+    <Compile Include="Models\DataTables\DataTablesRowData.cs" />
+    <Compile Include="Models\DataTables\DataTablesSearch.cs" />
+    <Compile Include="Models\DataTables\DataTablesServerSideResponse.cs" />
+    <Compile Include="Models\Dto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileNoteCreateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\IComponentDefinition.cs" />
+    <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\CheckboxesWithText\CheckboxWithTextDefinitionDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\CheckboxesWithText\CheckboxWithTextValueDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\OptionsWithText\OptionsWithTextDefinitionDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\OptionsWithText\OptionsWithTextValueDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\SelectsFromList\SelectItemFromListDefinitionDto.cs" />
+    <Compile Include="Models\Helpers\ResultDto.cs" />
+    <Compile Include="Interfaces\IIdentifiableDto.cs" />
     <Compile Include="Constants\Auth.cs" />
     <Compile Include="Constants\ImageUrlAttribute.cs" />
+    <Compile Include="Enums\FileTemplateComponentPermissionAction.cs" />
+    <Compile Include="Enums\PaymentMethodType.cs" />
     <Compile Include="Enums\PermissionType.cs" />
     <Compile Include="Enums\ScheduledCommunicationState.cs" />
     <Compile Include="Enums\SearchStatus.cs" />
@@ -63,13 +81,14 @@
     <Compile Include="Enums\TrademarkRegistry.cs" />
     <Compile Include="Enums\UserRole.cs" />
     <Compile Include="Enums\WatchingServiceStatus.cs" />
+    <Compile Include="Extensions\DateTimeExt.cs" />
     <Compile Include="Extensions\HttpClientExt.cs" />
     <Compile Include="Extensions\HttpContentExt.cs" />
     <Compile Include="Extensions\ListFrequencyDtoExt.cs" />
     <Compile Include="Extensions\ListStringExt.cs" />
     <Compile Include="Extensions\ObjExt.cs" />
     <Compile Include="Extensions\StringExt.cs" />
-    <Compile Include="ILawPanelClient.cs" />
+    <Compile Include="Interfaces\ILawPanelClient.cs" />
     <Compile Include="LawPanelClient.cs" />
     <Compile Include="Models\Account\AuthCookieModel.cs" />
     <Compile Include="Models\Account\LoginBindingModel.cs" />
@@ -77,8 +96,9 @@
     <Compile Include="Models\Account\TwoFactorAuthenticationProviderDto.cs" />
     <Compile Include="Models\Account\VerifyCodeBoundingModel.cs" />
     <Compile Include="Models\BrandMonitoring\BrandMonitoringConfigDto.cs" />
+    <Compile Include="Models\BrandMonitoring\BrandMonitoringCreateDto.cs" />
     <Compile Include="Models\BrandMonitoring\BrandMonitoringResultDto.cs" />
-    <Compile Include="Models\ClientDto.cs" />
+    <Compile Include="Models\Clients\ClientDto.cs" />
     <Compile Include="Models\Clients\ClientUserDto.cs" />
     <Compile Include="Models\Common\DeleteDto.cs" />
     <Compile Include="Models\Common\ReadDto.cs" />
@@ -89,23 +109,81 @@
     <Compile Include="Models\ContactInfo\ContactInfoDto.cs" />
     <Compile Include="Models\ContactInfo\ContactInfoReadDto.cs" />
     <Compile Include="Models\ContactInfo\ContactInfoOriginDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileAttachmentCreateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileAttachmentDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileAttachmentUpdateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileComponentCreateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileComponentDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileComponentRepresentationDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileComponentCreateUpdateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileCreateIntoFolderDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileCreateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileEventDto.cs" />
+    <Compile Include="Models\Firms\ClientCreateDto.cs" />
+    <Compile Include="Models\Firms\ClientUpdateDto.cs" />
+    <Compile Include="Models\Firms\FirmUpdateDto.cs" />
+    <Compile Include="Models\Helpers\EmailExtractedDto.cs" />
+    <Compile Include="Models\Sales\Invoices\InvoiceEntities\InvoiceEntityDefinitionDto.cs" />
+    <Compile Include="Models\Sales\Invoices\InvoiceEntities\InvoiceEntityInstanceDto.cs" />
+    <Compile Include="Models\Sales\Invoices\InvoiceEntities\InvoiceEntityInstanceFilterDto.cs" />
+    <Compile Include="Models\Sales\Invoices\InvoiceEntities\InvoiceEntityInstanceWithItemsDto.cs" />
+    <Compile Include="Models\Sales\Invoices\InvoiceReadDto.cs" />
+    <Compile Include="Models\Sales\Invoices\InvoiceTypes\InvoiceTypeDto.cs" />
+    <Compile Include="Models\Sales\Invoices\InvoiceUpdateDto.cs" />
+    <Compile Include="Models\Sales\Invoices\InvoiceCreateDto.cs" />
+    <Compile Include="Models\Firms\FirmInvoices\FirmInvoiceDto.cs" />
+    <Compile Include="Models\Firms\FirmPayments\FirmPaymentDto.cs" />
+    <Compile Include="Models\Sales\Invoices\InvoiceDto.cs" />
+    <Compile Include="Models\Sales\Invoices\InvoiceItems\InvoiceItemReadDto.cs" />
+    <Compile Include="Models\Sales\Invoices\InvoiceItems\InvoiceItemUpdateDto.cs" />
+    <Compile Include="Models\Sales\Invoices\InvoiceItems\InvoiceItemCreateDto.cs" />
+    <Compile Include="Models\Sales\Invoices\InvoiceItems\InvoiceItemDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileReadDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileStatusDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileTemplates\FileTemplateComponentDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileTemplates\FileTemplateComponentPermissionDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileTemplates\FileTemplateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileUpdateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileReminderDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FirmFileTemplateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FolderCreateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileEventForFolderDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FolderReadMultipleDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FolderReadSingleDto.cs" />
+    <Compile Include="Models\FirmsContactInfo\LeadComponentDto.cs" />
+    <Compile Include="Models\FirmsContactInfo\LeadComponentUpdateDto.cs" />
     <Compile Include="Models\FirmsContactInfo\SearchEmailLeadDto.cs" />
     <Compile Include="Models\FirmStatistics\ClassNumbersRequested.cs" />
     <Compile Include="Models\FirmStatistics\DashboardStatisticsModel.cs" />
     <Compile Include="Models\FirmStatistics\SearchesByDate.cs" />
+    <Compile Include="Models\FilesAndFolders\FileDto.cs" />
+    <Compile Include="Models\Firms\FilesAndFolders\FirmFileDto.cs" />
+    <Compile Include="Models\Firms\FilesAndFolders\FirmFolderDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FolderDto.cs" />
     <Compile Include="Models\Firms\FirmClientDto.cs" />
+    <Compile Include="Models\Firms\FirmContactInfoes\FirmContactInfoQualityCreateDto.cs" />
+    <Compile Include="Models\Firms\FirmContactInfoes\FirmContactInfoQualityDto.cs" />
+    <Compile Include="Models\Firms\FirmContactInfoes\FirmContactInfoUpdateDto.cs" />
     <Compile Include="Models\Firms\FirmContactInfoes\FirmContactInfoDto.cs" />
+    <Compile Include="Models\Firms\FirmContactInfoes\FirmContactInfoStatusCreateDto.cs" />
+    <Compile Include="Models\Firms\FirmContactInfoes\FirmContactInfoStatusDto.cs" />
+    <Compile Include="Models\Firms\FirmSearch\FirmSearchUpdateDto.cs" />
     <Compile Include="Models\Firms\FirmSearch\FirmSearchDto.cs" />
     <Compile Include="Models\Firms\FirmUiSettingsDto.cs" />
     <Compile Include="Models\Firms\FirmUserDto.cs" />
     <Compile Include="Models\Firms\FirmWidgetSettingsSearchDomainDto.cs" />
     <Compile Include="Models\Firms\FirmDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\CsvImporter\FirmPortfolioReadCsvDto.cs" />
     <Compile Include="Models\Firms\Portfolio\CsvImporter\FirmPortfolioCsvDto.cs" />
     <Compile Include="Models\Firms\Portfolio\CsvImporter\FirmPortfolioImportLineResult.cs" />
     <Compile Include="Models\Firms\Portfolio\FirmPortfolioBundle.cs" />
+    <Compile Include="Models\Firms\Portfolio\FirmPortfolioReadDto.cs" />
     <Compile Include="Models\Firms\Portfolio\FirmPortfolioDto.cs" />
     <Compile Include="Models\Firms\Portfolio\CsvImporter\FirmPortfolioImportFromCsvResultDto.cs" />
     <Compile Include="Models\Firms\Portfolio\FirmPortfolioReminderDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\FirmPortfolioReminderCommonDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\FirmPortfolioRemindersCommonDto.cs" />
+    <Compile Include="Models\Firms\RegisterDto.cs" />
     <Compile Include="Models\Firms\Sales\FirmProductFilters\FirmProductFilterCombinationsDto.cs" />
     <Compile Include="Models\Firms\Sales\FirmProductFilters\FirmProductFilterCreateDto.cs" />
     <Compile Include="Models\Firms\Sales\FirmProductFilters\FirmProductFilterDto.cs" />
@@ -119,44 +197,75 @@
     <Compile Include="Models\Firms\Widgets\Sales\FirmWidgetSaleCreateDto.cs" />
     <Compile Include="Models\Firms\Widgets\Sales\FirmWidgetSaleReadDto.cs" />
     <Compile Include="Models\Firms\Widgets\Sales\FirmWidgetSalesCalculateDto.cs" />
-    <Compile Include="Models\Sales\CurrencyCotizationDto.cs" />
-    <Compile Include="Models\Sales\CurrencyDto.cs" />
+    <Compile Include="Models\Helpers\AddressDto.cs" />
+    <Compile Include="Models\Notifications\NotificationDto.cs" />
+    <Compile Include="Models\Sales\Currencies\CurrencyCotizationDto.cs" />
+    <Compile Include="Models\Sales\Currencies\CurrencyDto.cs" />
+    <Compile Include="Models\Sales\FileInvoiceItems\FileInvoiceItemReadDto.cs" />
+    <Compile Include="Models\Sales\FileInvoiceItems\FileInvoiceItemDto.cs" />
+    <Compile Include="Models\Sales\FileInvoiceItems\FileInvoiceItemUpdateDto.cs" />
+    <Compile Include="Models\Sales\FileInvoiceItems\FileInvoiceItemCreateDto.cs" />
     <Compile Include="Models\Sales\FirmWidgetSalesSettingsDto.cs" />
+    <Compile Include="Models\Sales\PaymentMethods\PaymentMethodClientUpdateComponentDto.cs" />
+    <Compile Include="Models\Sales\PaymentMethods\PaymentCreateComponentDto.cs" />
+    <Compile Include="Models\Sales\PaymentMethods\PaymentMethodClientReadDto.cs" />
+    <Compile Include="Models\Sales\PaymentMethods\PaymentMethodClientUpdateDto.cs" />
+    <Compile Include="Models\Sales\PaymentMethods\PaymentMethodClientCreateDto.cs" />
+    <Compile Include="Models\Sales\PaymentMethods\PaymentMethodClientDto.cs" />
+    <Compile Include="Models\Sales\PaymentMethods\PaymentMethodComponentDefinitionDto.cs" />
+    <Compile Include="Models\Sales\PaymentMethods\PaymentMethodComponentCreateDto.cs" />
+    <Compile Include="Models\Sales\PaymentMethods\PaymentMethodComponentDto.cs" />
+    <Compile Include="Models\Sales\PaymentMethods\PaymentMethodComponentInstanceDto.cs" />
+    <Compile Include="Models\Sales\PaymentMethods\PaymentMethodDto.cs" />
+    <Compile Include="Models\Sales\PaymentProviderDto.cs" />
+    <Compile Include="Models\Sales\PaymentStatuses\PaymentStatusActionDto.cs" />
+    <Compile Include="Models\Sales\PaymentStatuses\PaymentStatusDto.cs" />
+    <Compile Include="Models\Sales\PaymentStatuses\PaymentStatusPaymentTransactionTypeDto.cs" />
+    <Compile Include="Models\Sales\PaymentTransactions\PaymentTransactionCreateDto.cs" />
+    <Compile Include="Models\Sales\PaymentTransactions\PaymentTransactionDto.cs" />
+    <Compile Include="Models\Sales\PaymentTransactions\PaymentTransactionStatusDto.cs" />
+    <Compile Include="Models\Sales\PaymentTransactions\PaymentTransactionTypeDto.cs" />
+    <Compile Include="Models\Sales\Payments\PaymentUpdateDto.cs" />
+    <Compile Include="Models\Sales\Payments\PaymentReadDto.cs" />
+    <Compile Include="Models\Sales\Payments\PaymentCreateDto.cs" />
+    <Compile Include="Models\Sales\Payments\PaymentDto.cs" />
     <Compile Include="Models\Sales\PriceDto.cs" />
-    <Compile Include="Models\Sales\ProductFilterDetailDto.cs" />
-    <Compile Include="Models\Sales\ProductFilterDto.cs" />
-    <Compile Include="Models\Sales\ProductFilterTemplateReadDto.cs" />
-    <Compile Include="Models\Sales\ProductFilterTemplateDto.cs" />
-    <Compile Include="Models\Sales\ProductModifierDefinitionDto.cs" />
-    <Compile Include="Models\Sales\ProductModifierDto.cs" />
-    <Compile Include="Models\Sales\ProductModifierGroupDto.cs" />
-    <Compile Include="Models\Sales\ProductDto.cs" />
+    <Compile Include="Models\Sales\Products\ProductFilters\ProductFilterDetailDto.cs" />
+    <Compile Include="Models\Sales\Products\ProductFilters\ProductFilterDto.cs" />
+    <Compile Include="Models\Sales\Products\ProductFilters\ProductFilterTemplateReadDto.cs" />
+    <Compile Include="Models\Sales\Products\ProductFilters\ProductFilterTemplateDto.cs" />
+    <Compile Include="Models\Sales\Products\ProductModifiers\ProductModifierDefinitionDto.cs" />
+    <Compile Include="Models\Sales\Products\ProductModifiers\ProductModifierDto.cs" />
+    <Compile Include="Models\Sales\Products\ProductModifiers\ProductModifierGroupDto.cs" />
+    <Compile Include="Models\Sales\Products\ProductDto.cs" />
     <Compile Include="Models\Firms\Widgets\Sales\FirmWidgetSaleDto.cs" />
     <Compile Include="Models\Firms\Widgets\Searches\FirmWidgetSettingsSearchDto.cs" />
-    <Compile Include="Models\FrequencyDto.cs" />
-    <Compile Include="Models\GoodAndServiceDto.cs" />
+    <Compile Include="Models\Helpers\FrequencyDto.cs" />
+    <Compile Include="Models\Sales\GoodAndServiceDto.cs" />
     <Compile Include="Models\Helpers\CountryDto.cs" />
     <Compile Include="Models\Helpers\LanguageDto.cs" />
-    <Compile Include="Models\HubNotifications\NotificationFromHub.cs" />
-    <Compile Include="Models\HubNotifications\NotificationFromHubData.cs" />
-    <Compile Include="Models\IdentityDto.cs" />
+    <Compile Include="Models\Identities\IdentityDto.cs" />
     <Compile Include="Models\Registry\RegistryDto.cs" />
     <Compile Include="Models\Reminders\ReminderBaseModel.cs" />
     <Compile Include="Models\Reminders\ReminderDto.cs" />
-    <Compile Include="Models\Sales\ProductTypeDto.cs" />
+    <Compile Include="Models\Sales\Products\ProductTypeDto.cs" />
     <Compile Include="Models\Sales\TaxDto.cs" />
     <Compile Include="Models\ScheduledCommunications\ScheduledCommunicationDto.cs" />
     <Compile Include="Models\ScheduledCommunications\ScheduledCommunicationReadDto.cs" />
     <Compile Include="Models\SearchClass\SearchClassDto.cs" />
-    <Compile Include="Models\SearchDto.cs" />
+    <Compile Include="Models\Searches\SearchDto.cs" />
     <Compile Include="Models\SearchOrigins\SearchOriginDto.cs" />
-    <Compile Include="Models\SearchQuery.cs" />
-    <Compile Include="Models\SearchResultDto.cs" />
+    <Compile Include="Models\Searches\SearchQuery.cs" />
+    <Compile Include="Models\Searches\SearchResultDto.cs" />
+    <Compile Include="Models\Tags\TagCreateDto.cs" />
+    <Compile Include="Models\Tags\TagDto.cs" />
+    <Compile Include="Models\Tags\TagReadDto.cs" />
+    <Compile Include="Models\Tags\TagUpdateDto.cs" />
     <Compile Include="Models\Templates\BootstrapTrees\BootstrapTreeLeaf.cs" />
     <Compile Include="Models\Templates\BootstrapTrees\BootstrapTreeLeafState.cs" />
     <Compile Include="Models\Templates\TemplateDto.cs" />
-    <Compile Include="Models\TrademarkReadDto.cs" />
-    <Compile Include="Models\TrademarkDto.cs" />
+    <Compile Include="Models\Trademarks\TrademarkReadDto.cs" />
+    <Compile Include="Models\Trademarks\TrademarkDto.cs" />
     <Compile Include="Models\User\UserDto.cs" />
     <Compile Include="Models\User\UserLoginDetailsDto.cs" />
     <Compile Include="Models\User\UserSettingsDto.cs" />
@@ -165,11 +274,8 @@
     <Compile Include="Models\Watchings\WatchingSearch.cs" />
     <Compile Include="Models\Watchings\WatchingUserSettingsDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proxy\Proxy.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Firms\FirmClients\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
@@ -177,6 +283,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="LawPanel.ApiClient.DotNet.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

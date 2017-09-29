@@ -1,5 +1,6 @@
 ﻿using System;
 using LawPanel.ApiClient.Enums;
+using LawPanel.ApiClient.Models.Searches;
 
 namespace LawPanel.ApiClient.Models.Watchings
 {

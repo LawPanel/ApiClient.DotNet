@@ -15,5 +15,13 @@ namespace LawPanel.ApiClient.Extensions
         {
             return Regex.Replace(camelCaseString, @"([A-Z])([A-Z][a-z])|([a-z0-9])([A-Z])", "$1$3_$2$4").ToLower();
         }
+
+        public static Guid ToGuid(this string stringValue)
+        {
+            Guid toReturn;
+            var safeString = stringValue.Replace("_", "-").Trim();
+            Guid.TryParse(safeString, out toReturn);
+            return toReturn;
+        }
     }
 }

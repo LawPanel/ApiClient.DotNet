@@ -1,5 +1,5 @@
-﻿using LawPanel.ApiClient.Abstractions.Base;
-using LawPanel.ApiClient.Abstractions.Interfaces;
+﻿using LawPanel.ApiClient.Interfaces;
+using LawPanel.ApiClient.Models.Searches;
 using LawPanel.ApiClient.Models.SearchOrigins;
 
 namespace LawPanel.ApiClient.Models.Firms.FirmSearch

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using LawPanel.ApiClient.Abstractions.Base;
-using LawPanel.ApiClient.Abstractions.Interfaces;
+using LawPanel.ApiClient.Interfaces;
 
 namespace LawPanel.ApiClient.Models.ContactInfo
 {
@@ -13,6 +12,7 @@ namespace LawPanel.ApiClient.Models.ContactInfo
 
         [Display(Name = "[[[Components of contact]]]")]
         public IList<ContactInfoComponentDefinitionDto> ComponentsDefinitions   { get; set; }
-        
+
+        public bool                                     ShowOnSearchWidget      { get; set; }
     }
 }

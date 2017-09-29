@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using LawPanel.ApiClient.Abstractions.Base;
 using LawPanel.ApiClient.Models.Sales;
 
 namespace LawPanel.ApiClient.Models.Firms.Widgets.Sales
