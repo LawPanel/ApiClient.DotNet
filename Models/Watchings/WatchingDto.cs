@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using LawPanel.ApiClient.Abstractions.Base;
-using LawPanel.ApiClient.Abstractions.Interfaces;
+using LawPanel.ApiClient.Interfaces;
 
 namespace LawPanel.ApiClient.Models.Watchings
 {

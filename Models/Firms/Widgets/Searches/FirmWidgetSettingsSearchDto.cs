@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using LawPanel.ApiClient.Abstractions.Base;
-using LawPanel.ApiClient.Abstractions.Interfaces;
+using LawPanel.ApiClient.Interfaces;
 using LawPanel.ApiClient.Models.ContactInfo;
+using LawPanel.ApiClient.Models.Helpers;
 using LawPanel.ApiClient.Models.Registry;
 
 namespace LawPanel.ApiClient.Models.Firms.Widgets.Searches
@@ -16,10 +16,6 @@ namespace LawPanel.ApiClient.Models.Firms.Widgets.Searches
 
         public bool                                         ResultsShowProbablyAvailable                        { get; set; }
         public ContactInfoDefinitionDto                     ResultsShowProbablyAvailableContactInfoDefinition   { get; set; }
-        public bool                                         ResultsShowSimilarMarks                             { get; set; }
-        public ContactInfoDefinitionDto                     ResultsShowSimilarMarksContactInfoDefinition        { get; set; }
-        public bool                                         ResultsEmailSearchReport                            { get; set; }
-        public ContactInfoDefinitionDto                     ResultsEmailSearchReportContactInfoDefinition       { get; set; }
 
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "[[[E-mail is not valid]]]")]
         [Display(Name = "[[[Notificate at this email address]]]")]
@@ -30,7 +26,17 @@ namespace LawPanel.ApiClient.Models.Firms.Widgets.Searches
         public bool                                         OptionsCommnentsBox                                 { get; set; }
 
         public string                                       TextOnTop                                           { get; set; }
-        public string                                       TextOnSearchEnd                                     { get; set; }
+        public string                                       TextOnSearchEndAndTrademarkCanBeRegistered          { get; set; }
+        public string                                       TextOnSearchEndAndTrademarkCanNotBeRegistered       { get; set; }
+
+        public bool                                         UseFixedSize                                        { get; set; }
+        public int                                          Width                                               { get; set; }
+        public int                                          Height                                              { get; set; }
+        public decimal                                      Zoom                                                { get; set; }
+
+        public bool                                         ShowOnlyRegisteredTrademarks                        { get; set; }
+
+        public int                                          Threshold                                           { get; set; }
 
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using LawPanel.ApiClient.Abstractions.Base;
-using LawPanel.ApiClient.Abstractions.Interfaces;
+using LawPanel.ApiClient.Interfaces;
+using LawPanel.ApiClient.Models.Clients;
 using LawPanel.ApiClient.Models.User;
 
 namespace LawPanel.ApiClient.Models.Firms

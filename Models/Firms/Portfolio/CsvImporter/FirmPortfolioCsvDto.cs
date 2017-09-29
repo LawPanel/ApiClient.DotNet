@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using LawPanel.ApiClient.Abstractions.Base;
-using LawPanel.ApiClient.Abstractions.Interfaces;
+using LawPanel.ApiClient.Interfaces;
 using LawPanel.ApiClient.Models.User;
 
 namespace LawPanel.ApiClient.Models.Firms.Portfolio.CsvImporter
@@ -23,6 +22,7 @@ namespace LawPanel.ApiClient.Models.Firms.Portfolio.CsvImporter
         #endregion
 
         #region Trademark
+
         [Display(Name = "[[[Application number]]]"), Required(ErrorMessage = "[[[Application number is required]]]", AllowEmptyStrings = false)]
         public string                   ApplicationNumber       { get; set; }
 
@@ -58,6 +58,9 @@ namespace LawPanel.ApiClient.Models.Firms.Portfolio.CsvImporter
 
         [Display(Name = "[[[Registry]]]"), Required(ErrorMessage = "[[[Registry is required]]]", AllowEmptyStrings = false)]
         public string                   Registry                { get; set; }
+
+        [Display(Name = "[[[Image URL]]]")]
+        public string                   ImageUrl                { get; set; }
 
         #endregion
 

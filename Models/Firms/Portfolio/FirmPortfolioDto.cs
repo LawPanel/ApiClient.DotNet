@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using LawPanel.ApiClient.Abstractions.Base;
-using LawPanel.ApiClient.Abstractions.Interfaces;
+using LawPanel.ApiClient.Interfaces;
 using LawPanel.ApiClient.Models.SearchClass;
 using LawPanel.ApiClient.Models.User;
 
@@ -43,10 +42,10 @@ namespace LawPanel.ApiClient.Models.Firms.Portfolio
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime?                ExpiryDate              { get; set; }
 
-        [Display(Name = "[[[Mark feature]]]"), Required(ErrorMessage = "[[[Mark feature is required]]]", AllowEmptyStrings = true)]
+        [Display(Name = "[[[Mark feature]]]")]
         public string                   MarkFeature             { set; get; }
 
-        [Display(Name = "[[[Kind mark]]]"), Required(ErrorMessage = "[[[Kind mark is required]]]", AllowEmptyStrings = true)]
+        [Display(Name = "[[[Kind mark]]]")]
         public string                   KindMark                { get; set; }
 
         [Display(Name = "[[[Mark text]]]"), Required(ErrorMessage = "[[[Mark text is required]]]", AllowEmptyStrings = false)]
@@ -60,7 +59,7 @@ namespace LawPanel.ApiClient.Models.Firms.Portfolio
 
         [Display(Name = "[[[Registry]]]"), Required(ErrorMessage = "[[[Registry is required]]]", AllowEmptyStrings = false)]
         public string                   RegistryId              { get; set; }
-        public string                   RegistryName                { get; set; }
+        public string                   RegistryName            { get; set; }
 
         #endregion
 
@@ -77,5 +76,8 @@ namespace LawPanel.ApiClient.Models.Firms.Portfolio
         public bool                     HasWatchings            { get; set; }
 
         public string                   TrademarkUrlOnIpo       { get; set; }
+
+        [Display(Name = "[[[Image]]]")]
+        public string                   ImageUrl                { get; set; }
     }
 }

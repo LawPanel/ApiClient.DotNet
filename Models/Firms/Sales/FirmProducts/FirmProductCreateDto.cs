@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using LawPanel.ApiClient.Abstractions.Base;
-using LawPanel.ApiClient.Abstractions.Interfaces;
+using LawPanel.ApiClient.Interfaces;
 using LawPanel.ApiClient.Models.Sales;
 
 namespace LawPanel.ApiClient.Models.Firms.Sales.FirmProducts
@@ -15,10 +14,10 @@ namespace LawPanel.ApiClient.Models.Firms.Sales.FirmProducts
 
         public Guid         ProductId           { get; set; }
 
-        [Display(Name = "[[[Code]]]"), Required(ErrorMessage = "[[[Fee item code (number) is required]]]")]
-        public int          ProductCode         { get; set; }
+        [Display(Name = "[[[Code]]]"), Required(ErrorMessage = "[[[Fee item code (for example: AA001) is required]]]")]
+        public string       ProductCode         { get; set; }
 
-        [Display(Name = "[[[Name]]]"), Required(ErrorMessage = "[[[Fee item name is required]]]")]
+        [Display(Name = "[[[Internal name]]]"), Required(ErrorMessage = "[[[Fee item name is required]]]")]
         public string       ProductName         { get; set; }
 
         [Display(Name = "[[[Public label]]]"), Required(ErrorMessage = "[[[Fee item name is required]]]")]

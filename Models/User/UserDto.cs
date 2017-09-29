@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using LawPanel.ApiClient.Abstractions.Base;
-using LawPanel.ApiClient.Abstractions.Interfaces;
 using LawPanel.ApiClient.Enums;
+using LawPanel.ApiClient.Interfaces;
 
 namespace LawPanel.ApiClient.Models.User
 {
     public class UserDto : Dto, IIdentifiableDto
     {
+        public bool ShouldSerialize;
+
         public string   Id              { get; set; }
 
         [Display(Name = "[[[First name]]]"), Required(ErrorMessage = "[[[First name is required]]]", AllowEmptyStrings = false)]
@@ -72,7 +73,7 @@ namespace LawPanel.ApiClient.Models.User
         public string Password { get; set; }
         public bool ShouldSerializePassword()
         {
-            return false;
+            return ShouldSerialize;
         }
 
         public bool ShouldSerializeRepeatPassword()
@@ -101,11 +102,17 @@ namespace LawPanel.ApiClient.Models.User
         }
         #endregion
 
+        [Display(Name = "[[[Yoti user]]]")]
+        public bool IsYoti { get; set; }
+
+        public string YotiId { get; set; }
+
         public UserSettingsDto UserSettings { get; set; }
 
         public UserDto()
         {
             Enable = true;
+            ShouldSerialize = false;
         }
     }
 }

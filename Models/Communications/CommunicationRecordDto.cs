@@ -1,10 +1,10 @@
-﻿using LawPanel.ApiClient.Abstractions.Base;
+﻿using LawPanel.ApiClient.Interfaces;
 
 namespace LawPanel.ApiClient.Models.Communications
 {
-    public class CommunicationRecordDto : Dto
+    public class CommunicationRecordDto : Dto, IIdentifiableDto
     {
-        public string   Id              { get; set; }
+        public string   Id              { get; set; } // Contains the ID ( name ) of blob contents
         public string   Channel         { get; set; }
         public string   From            { get; set; }
         public string   FromType        { get; set; }
@@ -18,5 +18,8 @@ namespace LawPanel.ApiClient.Models.Communications
         public string   Message         { get; set; }
         public long     UnixTimeStamp   { get; set; }
 
+        public string   Table           { get; set; }
+        public string   PartitionKey    { get; set; }
+        public string   RowKey          { get; set; }
     }
 }

@@ -1,0 +1,14 @@
+﻿using LawPanel.ApiClient.Interfaces;
+
+namespace LawPanel.ApiClient.Models.Firms.FirmContactInfoes
+{
+    public class FirmContactInfoStatusDto : Dto, IIdentifiableDto
+    {
+        public string   Id          { get; set; }
+        public FirmDto  Firm        { get; set; }
+        public string   Name        { get; set; }
+        public string   Description { get; set; }
+        public bool     IsDefault   { get; set; }
+        public int      Order       { get; set; }
+    }
+}

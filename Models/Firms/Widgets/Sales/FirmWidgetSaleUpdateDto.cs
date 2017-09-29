@@ -1,4 +1,4 @@
-﻿using LawPanel.ApiClient.Abstractions.Interfaces;
+﻿using LawPanel.ApiClient.Interfaces;
 
 namespace LawPanel.ApiClient.Models.Firms.Widgets.Sales
 {

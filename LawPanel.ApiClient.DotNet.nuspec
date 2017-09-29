@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>LawPanel.ApiClient.DotNet</id>
+    <version>0.0.10</version>
+    <title>.Net LawPanel API REST client</title>
+    <authors>LawPanel Ltd.</authors>
+    <owners>LawPanel Ltd.</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://www.gnu.org/licenses/gpl-3.0.en.html</licenseUrl>
+    <projectUrl>http://developer.lawpanel.com/</projectUrl>
+    <iconUrl>https://web.lawpanel.com/images/logo.jpg</iconUrl>
+    <description>Typed .NET client for lawpanel.com REST APIs</description>
+    <releaseNotes>Changes into DTOs, Files, Folders, Clients methods, etc.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>LawPanel, Law API, Trademarks, Services, lawyers</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
+    </dependencies>
+  </metadata>
+</package>

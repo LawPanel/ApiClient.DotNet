@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using LawPanel.ApiClient.Abstractions.Base;
-using LawPanel.ApiClient.Abstractions.Interfaces;
+using LawPanel.ApiClient.Interfaces;
 
 namespace LawPanel.ApiClient.Models.Helpers
 {
@@ -13,6 +12,9 @@ namespace LawPanel.ApiClient.Models.Helpers
 
         [Display(Name = "[[[Country short name]]]"), Required(ErrorMessage = "[[[Country short name is required]]]", AllowEmptyStrings = false)]
         public string ShortName { get; set; }
-     
+
+        [Display(Name = "[[[Weight order]]]")]
+        public int WeightOrder { get; set; }
+
     }
 }
