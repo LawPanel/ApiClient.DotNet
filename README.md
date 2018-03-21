@@ -79,9 +79,10 @@ Will returns all search classes ordered by the field `name` in descending orderi
 
 By example, if the field name is `Name` should be `name`, if it is `SearchClasses` you should write it as `search_classes`, etc.
 
-## [Searches](https://developer.lawpanel.com/docs/services/57d1b3e7781258070026484d/operations/57d1b3e978125813d06c1c0c)
 
 # Examples
+
+## [Searches](https://developer.lawpanel.com/docs/services/57d1b3e7781258070026484d/operations/57d1b3e978125813d06c1c0c)
 
 ### Creating a new trademark search 
 
