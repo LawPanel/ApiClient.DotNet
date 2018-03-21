@@ -38,5 +38,28 @@ namespace LawPanel.ApiClient.Models.Firms.Widgets.Searches
 
         public int                                          Threshold                                           { get; set; }
 
+        public string                                       FontBody                                            { get; set; }
+        public string                                       FontTitle                                           { get; set; }
+
+        public string                                       TextTitle                                           { get; set; }
+        public string                                       TextButton                                          { get; set; }
+
+        public string                                       ColorBackBody                                       { get; set; }
+        public string                                       ColorFrontStartTitle                                { get; set; }
+        public string                                       ColorFrontBody                                      { get; set; }
+        public string                                       ColorFrontStartSearchButton                         { get; set; }
+        public string                                       ColorBackStartSearchButton                          { get; set; }
+        public string                                       ColorFrontStartAboutText                            { get; set; }
+        public string                                       ColorBackStartAboutContent                          { get; set; }
+        public string                                       ColorFrontStartAboutContent                         { get; set; }
+
+        public string                                       ColorFrontResultTitle                               { get; set; }
+        public string                                       ColorBackResultButton                               { get; set; }
+        public string                                       ColorFrontResultButton                              { get; set; }
+
+        public bool                                         ShowAboutLink                                       { get; set; }
+
+
+
     }
 }

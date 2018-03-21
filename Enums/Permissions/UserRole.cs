@@ -1,4 +1,4 @@
-﻿namespace LawPanel.ApiClient.Enums
+﻿namespace LawPanel.ApiClient.Enums.Permissions
 {
     public enum UserRole
     {

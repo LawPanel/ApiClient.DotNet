@@ -24,5 +24,6 @@ namespace LawPanel.ApiClient.Models.FilesAndFolders.FileTemplates.ComponentDefin
         public string   OptionName          { get; set; }
         public string   OptionDescription   { get; set; }
         public bool     WithDescription     { get; set; }
+        public bool     SelectedByDefault   { get; set; }
     }
 }

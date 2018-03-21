@@ -3,11 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LawPanel.ApiClient.Models.Firms.Portfolio.CsvImporter
 {
-    public class FirmPortfolioReadCsvDto 
+    public class FirmPortfolioReadCsvFullDto : FirmPortfolioReadCsvBaseDto
     {
         #region Trademark
-        [Display(Name = "[[[Application number]]]"), Required(ErrorMessage = "[[[Application number is required]]]", AllowEmptyStrings = false)]
-        public string                   ApplicationNumber       { get; set; }
 
         [Display(Name = "[[[Registration date]]]")]
         [DataType(DataType.Date)]
@@ -39,11 +37,14 @@ namespace LawPanel.ApiClient.Models.Firms.Portfolio.CsvImporter
         [Display(Name = "[[[Status]]]"), Required(ErrorMessage = "[[[Status text is required]]]", AllowEmptyStrings = false)]
         public string                   Status                  { get; set; }
 
-        [Display(Name = "[[[Registry]]]"), Required(ErrorMessage = "[[[Registry is required]]]", AllowEmptyStrings = false)]
-        public string                   Registry                { get; set; }
-
         [Display(Name = "[[[Image URL]]]")]
         public string                   ImageUrl                { get; set; }
+
+        [Display(Name = "[[[Owner]]]")]
+        public string                   MarkOwner               { get; set; }
+
+        [Display(Name = "[[[Notes]]]")]
+        public string                   Notes                   { get; set; }
 
         #endregion
     }

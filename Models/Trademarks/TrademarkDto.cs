@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using LawPanel.ApiClient.Extensions;
 using LawPanel.ApiClient.Interfaces;
 using LawPanel.ApiClient.Models.Sales;
 using Newtonsoft.Json;
@@ -9,7 +10,7 @@ namespace LawPanel.ApiClient.Models.Trademarks
     public class TrademarkDto : Dto, IIdentifiableDto
     {
         public string                           Id                  {
-                                                                        get { return $"{ApplicationNumber}|{Registry}"; }
+                                                                        get { return $"{ApplicationNumber}|{Registry}".ToHexString(); }
                                                                         set { }
                                                                     } // Thx Luis, you are my hero! #@!%&&!!!
 

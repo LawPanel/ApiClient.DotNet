@@ -1,24 +1,20 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace LawPanel.ApiClient.Models.DataTables
+namespace LawPanel.ApiClient.Models.ApiQuery.DataTables
 {
-    public class DataTablesServerSideResponse
+    public class DataTablesServerSideResponse : ApiQueryResponse
     {
         [JsonProperty("draw")]
         public int                          Draw            { get; set; }
+
         [JsonProperty("recordsTotal")]
         public int                          RecordsTotal    { get; set; }
+
         [JsonProperty("recordsFiltered")]
         public int                          RecordsFiltered { get; set; }
-        [JsonProperty("data")]
-        public IList<object>                Data            { get; set; }
 
-
-        public DataTablesServerSideResponse()
+        public DataTablesServerSideResponse() : base(true)
         {
-            Data = new List<object>();
         }
-
     }
 }

@@ -13,7 +13,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -49,18 +49,32 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Attributes\DefaultOrderAttribute.cs" />
+    <Compile Include="Base\HttpClientLawPanel.cs" />
+    <Compile Include="Enums\HttpMethod.cs" />
+    <Compile Include="ContractResolvers\LowerCamelCasePropertyNamesContractResolver.cs" />
+    <Compile Include="ContractResolvers\SnakeCasePropertyNamesContractResolver.cs" />
+    <Compile Include="Enums\Permissions\Claims.cs" />
     <Compile Include="Exceptions\LawPanelException.cs" />
     <Compile Include="Extensions\DtoExt.cs" />
     <Compile Include="Extensions\FileDtoExt.cs" />
     <Compile Include="Extensions\FileUpdateDtoExt.cs" />
+    <Compile Include="Models\ApiQuery\ApiQueryResponse.cs" />
+    <Compile Include="Models\ApiQuery\ApiQueryResponseHeader.cs" />
+    <Compile Include="Models\ApiQuery\LawPanel\ColumnOrder.cs" />
+    <Compile Include="Models\ApiQuery\LawPanel\LawPanelApiResponse.cs" />
     <Compile Include="Models\Communications\CommunicationChannelDto.cs" />
+    <Compile Include="Models\Communications\CommunicationMessageDto.cs" />
     <Compile Include="Models\DataTables\DataTablesColumn.cs" />
     <Compile Include="Models\DataTables\DataTablesColumnSearch.cs" />
     <Compile Include="Models\DataTables\DataTablesOrder.cs" />
     <Compile Include="Models\DataTables\DataTablesRowData.cs" />
     <Compile Include="Models\DataTables\DataTablesSearch.cs" />
-    <Compile Include="Models\DataTables\DataTablesServerSideResponse.cs" />
+    <Compile Include="Models\ApiQuery\DataTables\DataTablesServerSideResponse.cs" />
     <Compile Include="Models\Dto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileLinkCreateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileLinkDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileLinkUpdateDto.cs" />
     <Compile Include="Models\FilesAndFolders\FileNoteCreateDto.cs" />
     <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\IComponentDefinition.cs" />
     <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\CheckboxesWithText\CheckboxWithTextDefinitionDto.cs" />
@@ -68,6 +82,31 @@
     <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\OptionsWithText\OptionsWithTextDefinitionDto.cs" />
     <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\OptionsWithText\OptionsWithTextValueDto.cs" />
     <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\SelectsFromList\SelectItemFromListDefinitionDto.cs" />
+    <Compile Include="Models\FirmStatistics\LeadsByDate.cs" />
+    <Compile Include="Models\Firms\ClientUpdateDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\AddBundleApiCallDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\AddBundleErrorDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\AddBundleResultReportDto.cs" />
+    <Compile Include="Models\Helpers\HistoryDataDto.cs" />
+    <Compile Include="Models\Firms\FirmReadDto.cs" />
+    <Compile Include="Models\Firms\FirmSearch\FirmSearchReadDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\CsvImporter\ErrorLine.cs" />
+    <Compile Include="Models\Firms\Portfolio\CsvImporter\FirmPortfolioReadCsvBaseDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\FirmPortfolioCreateDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\FirmPortfolioHistoryDto.cs" />
+    <Compile Include="Models\Helpers\OrganizationDto.cs" />
+    <Compile Include="Models\Helpers\ProcessesStatus\ProcessStatusHeaderDto.cs" />
+    <Compile Include="Models\Helpers\ProcessesStatus\ProcessStatusHistory.cs" />
+    <Compile Include="Models\Helpers\ProcessesStatus\ProcessStatusRecordDto.cs" />
+    <Compile Include="Models\Helpers\ProcessesStatus\ProcessStatusDto.cs" />
+    <Compile Include="Models\Helpers\ProcessesStatus\ProcessStatusHistoryItem.cs" />
+    <Compile Include="Models\Helpers\ProcessesStatus\ProcessStatusSummary.cs" />
+    <Compile Include="Models\Helpers\ShareWithDto.cs" />
+    <Compile Include="Models\Firms\Watchings\WatchingHistoryDto.cs" />
+    <Compile Include="Models\Firms\Watchings\WatchingProcessCsvFileProcessed.cs" />
+    <Compile Include="Models\Firms\Watchings\WatchingProcessCsvFilesError.cs" />
+    <Compile Include="Models\Firms\Watchings\WatchingProcessCsvFilesResultDto.cs" />
+    <Compile Include="Models\Firms\Watchings\WatchingResultCsvDto.cs" />
     <Compile Include="Models\Helpers\ResultDto.cs" />
     <Compile Include="Interfaces\IIdentifiableDto.cs" />
     <Compile Include="Constants\Auth.cs" />
@@ -78,8 +117,7 @@
     <Compile Include="Enums\ScheduledCommunicationState.cs" />
     <Compile Include="Enums\SearchStatus.cs" />
     <Compile Include="Enums\SearchType.cs" />
-    <Compile Include="Enums\TrademarkRegistry.cs" />
-    <Compile Include="Enums\UserRole.cs" />
+    <Compile Include="Enums\Permissions\UserRole.cs" />
     <Compile Include="Enums\WatchingServiceStatus.cs" />
     <Compile Include="Extensions\DateTimeExt.cs" />
     <Compile Include="Extensions\HttpClientExt.cs" />
@@ -120,9 +158,16 @@
     <Compile Include="Models\FilesAndFolders\FileCreateDto.cs" />
     <Compile Include="Models\FilesAndFolders\FileEventDto.cs" />
     <Compile Include="Models\Firms\ClientCreateDto.cs" />
-    <Compile Include="Models\Firms\ClientUpdateDto.cs" />
     <Compile Include="Models\Firms\FirmUpdateDto.cs" />
     <Compile Include="Models\Helpers\EmailExtractedDto.cs" />
+    <Compile Include="Models\Identities\ClaimDto.cs" />
+    <Compile Include="Models\Identities\ClaimTargetDto.cs" />
+    <Compile Include="Models\Registry\RegistryReadDto.cs" />
+    <Compile Include="Models\Thirds\Markify\Logo.cs" />
+    <Compile Include="Models\Thirds\Markify\Meta.cs" />
+    <Compile Include="Models\Thirds\Markify\PriorityDto.cs" />
+    <Compile Include="Models\Thirds\Markify\Response.cs" />
+    <Compile Include="Models\Thirds\Markify\Result.cs" />
     <Compile Include="Models\Sales\Invoices\InvoiceEntities\InvoiceEntityDefinitionDto.cs" />
     <Compile Include="Models\Sales\Invoices\InvoiceEntities\InvoiceEntityInstanceDto.cs" />
     <Compile Include="Models\Sales\Invoices\InvoiceEntities\InvoiceEntityInstanceFilterDto.cs" />
@@ -173,7 +218,7 @@
     <Compile Include="Models\Firms\FirmUserDto.cs" />
     <Compile Include="Models\Firms\FirmWidgetSettingsSearchDomainDto.cs" />
     <Compile Include="Models\Firms\FirmDto.cs" />
-    <Compile Include="Models\Firms\Portfolio\CsvImporter\FirmPortfolioReadCsvDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\CsvImporter\FirmPortfolioReadCsvFullDto.cs" />
     <Compile Include="Models\Firms\Portfolio\CsvImporter\FirmPortfolioCsvDto.cs" />
     <Compile Include="Models\Firms\Portfolio\CsvImporter\FirmPortfolioImportLineResult.cs" />
     <Compile Include="Models\Firms\Portfolio\FirmPortfolioBundle.cs" />
@@ -254,6 +299,7 @@
     <Compile Include="Models\ScheduledCommunications\ScheduledCommunicationReadDto.cs" />
     <Compile Include="Models\SearchClass\SearchClassDto.cs" />
     <Compile Include="Models\Searches\SearchDto.cs" />
+    <Compile Include="Models\Searches\PreviewSearchDto.cs" />
     <Compile Include="Models\SearchOrigins\SearchOriginDto.cs" />
     <Compile Include="Models\Searches\SearchQuery.cs" />
     <Compile Include="Models\Searches\SearchResultDto.cs" />
@@ -264,27 +310,34 @@
     <Compile Include="Models\Templates\BootstrapTrees\BootstrapTreeLeaf.cs" />
     <Compile Include="Models\Templates\BootstrapTrees\BootstrapTreeLeafState.cs" />
     <Compile Include="Models\Templates\TemplateDto.cs" />
+    <Compile Include="Models\Trademarks\SearchForPortfolioDto.cs" />
+    <Compile Include="Models\Trademarks\TrademarkDetailsDto.cs" />
     <Compile Include="Models\Trademarks\TrademarkReadDto.cs" />
     <Compile Include="Models\Trademarks\TrademarkDto.cs" />
+    <Compile Include="Models\User\UserCreateUpdateDto.cs" />
     <Compile Include="Models\User\UserDto.cs" />
     <Compile Include="Models\User\UserLoginDetailsDto.cs" />
     <Compile Include="Models\User\UserSettingsDto.cs" />
     <Compile Include="Models\Watchings\WatchingBundleDto.cs" />
+    <Compile Include="Models\Watchings\WatchingCreateDto.cs" />
     <Compile Include="Models\Watchings\WatchingDto.cs" />
     <Compile Include="Models\Watchings\WatchingSearch.cs" />
+    <Compile Include="Models\Watchings\WatchingUpdateDto.cs" />
     <Compile Include="Models\Watchings\WatchingUserSettingsDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="LawPanel.ApiClient.DotNet.nuspec" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\v4.5\Profile\Profile7\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

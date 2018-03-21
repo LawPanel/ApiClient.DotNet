@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using LawPanel.ApiClient.Enums;
 using LawPanel.ApiClient.Models.Account;
+using LawPanel.ApiClient.Models.ApiQuery.LawPanel;
 using LawPanel.ApiClient.Models.Clients;
 using LawPanel.ApiClient.Models.FilesAndFolders;
 using LawPanel.ApiClient.Models.FilesAndFolders.FileTemplates;
@@ -45,8 +45,8 @@ namespace LawPanel.ApiClient.Interfaces
         SearchStatus                                    GetStatus(Guid searchId);
         IEnumerable<SearchResultDto>                    GetResults(Guid id);
 
-        Task<IEnumerable<SearchOriginDto>>              ReadSearchOrigin();
-        Task<IEnumerable<SearchClassDto>>               ReadSearchClass();
+        IEnumerable<SearchOriginDto>                    ReadSearchOrigin(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
+        IEnumerable<SearchClassDto>                     ReadSearchClass(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
 
         TrademarkDto                                    TrademarkByApplicationNumber(string registry, string applicationNumber);
         IEnumerable<TrademarkDto>                       TrademarkSearchByText(string txt);
@@ -58,103 +58,111 @@ namespace LawPanel.ApiClient.Interfaces
         IEnumerable<string>                             TrademarkLetters(string startWith, int len, string registry);
         int                                             TrademarkCountByLetter(string startWith, int len, string registry);
 
-        IEnumerable<SearchClassDto>                     ReadSearchClasses();
-        IEnumerable<RegistryDto>                        ReadRegistries();
-        IEnumerable<FrequencyDto>                       ReadFrequencies();
-        List<SearchOriginDto>                           ReadSearchOrigins();
+        IEnumerable<SearchClassDto>                     ReadSearchClasses(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
+        IEnumerable<RegistryDto>                        ReadRegistries(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
+        IEnumerable<FrequencyDto>                       ReadFrequencies(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
+        List<SearchOriginDto>                           ReadSearchOrigins(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
 
-        Task<AuthCookieModel>                           SetUserIdentityAsync(LoginBindingModel loginBindingModel);
+        AuthCookieModel                                 SetUserIdentityAsync(LoginBindingModel loginBindingModel);
         UserLoginDetailsDto                             GetUserLoginDetails(LoginBindingModel loginBindingModel);
         IdentityDto                                     GetUserDetails();
         AuthCookieModel                                 SetUserIdentity(LoginBindingModel loginBindingModel);
 
         WatchingDto                                     CreateWatching(WatchingDto watching);
-        Task<IEnumerable<WatchingDto>>                  ReadWatchings();
+        IEnumerable<WatchingDto>                        ReadWatchings(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
         ResultDto                                       UpdateWatching(WatchingDto watching);
         ResultDto                                       DeleteWatching(Guid id);
-        Task                                            CreateWatchingBundle(List<WatchingBundleDto> watchingBundles);
+        void                                            CreateWatchingBundle(List<WatchingBundleDto> watchingBundles);
 
         WatchingUserSettingsDto                         CreateWatchingUserSettings(WatchingUserSettingsDto watchingUserSettingsDto);
         WatchingUserSettingsDto                         ReadWatchingUserSettings();
         ResultDto                                       UpdateWatchingUserSettings(WatchingUserSettingsDto watchingUserSettingsDto);
         ResultDto                                       DeleteWatchingUserSettings(Guid id);
 
-        Task<string>                                    GetFirmApiKey();
+        string                                          GetFirmApiKey();
 
-        FirmPortfolioDto                                CreateFirmPortfolio(FirmPortfolioDto portfolioDto);
-        Task<IEnumerable<FirmPortfolioReadDto>>         ReadFirmPortfolios();
-        ResultDto                                       UpdateFirmPortfolio(FirmPortfolioDto firmPortfolioDto);
+        FirmPortfolioDto                                CreateFirmPortfolio(FirmPortfolioDto portfolio);
+        IEnumerable<FirmPortfolioReadDto>               ReadFirmPortfolios(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
+        ResultDto                                       UpdateFirmPortfolio(FirmPortfolioDto firmPortfolio);
         ResultDto                                       DeleteFirmPortfolio(Guid id);
 
         FirmContactInfoDto                              CreateLead(int origin, List<LeadComponentDto> components);
         void                                            CreateSearchEmailLead(SearchEmailLeadDto searchEmailLead);
 
         ClientDto                                       CreateClient(ClientCreateDto client);
-        IEnumerable<FirmClientDto>                      ReadClient();
+        IEnumerable<FirmClientDto>                      ReadClient(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
         ClientDto                                       ReadClient(Guid id);
         ResultDto                                       UpdateClient(ClientUpdateDto clientUpdate);
         ResultDto                                       DeleteClient(Guid id);
 
-        IEnumerable<CountryDto>                         ReadCountry();
+        IEnumerable<CountryDto>                         ReadCountry(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
 
         FirmProductDto                                  CreateFeeItem(FirmProductCreateDto firmProductCreate);
-        IEnumerable<FirmProductReadDto>                 ReadFeeItem();
+        IEnumerable<FirmProductReadDto>                 ReadFeeItem(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
         ResultDto                                       UpdateFeeItem(FirmProductUpdateDto firmProductUpdate);
         ResultDto                                       DeleteFeeItem(Guid id);
 
         FolderReadSingleDto                             CreateFolder(FolderCreateDto folderCreate);
-        IEnumerable<FolderReadMultipleDto>              ReadFolder();
+        FolderDto                                       ReadFolder(Guid folderId);
+        IEnumerable<FolderReadMultipleDto>              ReadFolder(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
         ResultDto                                       UpdateFolder(FolderDto folder);
         ResultDto                                       DeleteFolder(Guid id);
 
         FileDto                                         CreateFile(FileCreateDto fileCreateDto);
         FileDto                                         ReadFile(Guid fileId);
-        IEnumerable<FileReadDto>                        ReadFiles(Guid? folderId);
+        IEnumerable<FileReadDto>                        ReadFiles(Guid? folderId, int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
         ResultDto                                       UpdateFile(FileUpdateDto fileUpdateDto);
         ResultDto                                       DeleteFile(Guid id);
 
         ResultDto                                       AddNoteIntoFile(Guid fileId, FileNoteCreateDto fileNoteCreate);
 
         FileAttachmentDto                               CreateFileAttachment(FileAttachmentCreateDto fileAttachmentCreateDto);
-        IEnumerable<FileAttachmentDto>                  ReadFileAttachment();
+        IEnumerable<FileAttachmentDto>                  ReadFileAttachment(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
         ResultDto                                       UpdateFile(FileAttachmentUpdateDto fileAttachmentUpdateDto);
         ResultDto                                       DeleteFileAttachment(Guid id);
 
-        IEnumerable<FileEventForFolderDto>              ReadFileEventsOfFolder(Guid folderId);
-        IEnumerable<FileEventDto>                       ReadFileEventsOfFile(Guid fileId);
+        IEnumerable<FileEventForFolderDto>              ReadFileEventsOfFolder(Guid folderId, int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
+        IEnumerable<FileEventDto>                       ReadFileEventsOfFile(Guid fileId, int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
 
-        IEnumerable<FileStatusDto>                      ReadFileStatus();
+        IEnumerable<FileStatusDto>                      ReadFileStatus(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
 
-        IEnumerable<FileTemplateDto>                    ReadFileTemplate();
+        IEnumerable<FileTemplateDto>                    ReadFileTemplate(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
         
-        IEnumerable<CurrencyDto>                        ReadCurrency();
+        IEnumerable<CurrencyDto>                        ReadCurrency(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
 
-        IEnumerable<InvoiceTypeDto>                     ReadInvoiceType();
+        IEnumerable<InvoiceTypeDto>                     ReadInvoiceType(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
 
         InvoiceItemDto                                  CreateInvoiceItem(InvoiceItemCreateDto invoiceItemCreate);
-        IEnumerable<InvoiceItemReadDto>                 ReadInvoiceItem(string entityType = null, Guid? entityId = null);
+        IEnumerable<InvoiceItemReadDto>                 ReadInvoiceItem(string entityType = null, Guid? entityId = null, int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
         ResultDto                                       UpdateInvoiceItem(InvoiceItemUpdateDto invoiceItemUpdate);
         ResultDto                                       DeleteInvoiceItem(Guid id);
 
         InvoiceDto                                      CreateInvoice(InvoiceCreateDto invoiceCreate);
-        IEnumerable<InvoiceReadDto>                     ReadInvoice(string entityType = null, Guid? entityId = null);
+        IEnumerable<InvoiceReadDto>                     ReadInvoice(string entityType = null, Guid? entityId = null, int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
         ResultDto                                       UpdateInvoice(InvoiceUpdateDto invoiceUpdate);
         ResultDto                                       DeleteInvoice(Guid id);
 
-        IEnumerable<LanguageDto>                        ReadLanguage();
+        IEnumerable<LanguageDto>                        ReadLanguage(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
 
-        IEnumerable<PaymentMethodDto>                   ReadPaymentMethod();
+        IEnumerable<PaymentMethodDto>                   ReadPaymentMethod(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
 
-        IEnumerable<PaymentTransactionTypeDto>          ReadPaymentTransactionType();
+        IEnumerable<PaymentTransactionTypeDto>          ReadPaymentTransactionType(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
 
-        IEnumerable<PaymentProviderDto>                 ReadPaymentProvider();
+        IEnumerable<PaymentProviderDto>                 ReadPaymentProvider(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
 
         PaymentDto                                      CreatePayment(PaymentCreateDto paymentCreate);
-        IEnumerable<PaymentReadDto>                     ReadPayment(Guid? invoiceId = null);
+        IEnumerable<PaymentReadDto>                     ReadPayment(Guid? invoiceId = null, int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
         ResultDto                                       UpdatePayment(PaymentUpdateDto paymentUpdate);
 
         void                                            CreatePortfolioBundle(List<FirmPortfolioBundle> firmPortfolioBundles);
 
         DashboardStatisticsModel                        ReadFirmStatisticsDashboard();
+
+        ClientUserDto                                   CreateClientUser(ClientUserDto firmClient);
+        IEnumerable<ClientUserDto>                      ReadClientUser(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
+        ResultDto                                       UpdateClient(ClientUserDto clientUser);
+        ResultDto                                       DeleteClientUser(Guid id);
+
+        decimal                                         ProductFilterCalculate(string internalName, params string[][] combinations);
     }
 }

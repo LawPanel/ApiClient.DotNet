@@ -1,16 +1,9 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using LawPanel.ApiClient.ContractResolvers;
+using LawPanel.ApiClient.Models;
+using Newtonsoft.Json;
 
 namespace LawPanel.ApiClient.Extensions
 {
-
-    public class SnakeCasePropertyNamesContractResolver : DefaultContractResolver
-    {
-        protected override string ResolvePropertyName(string propertyName)
-        {
-            return propertyName.CamelCaseToSnakeCase();
-        }
-    }
 
     public static class ObjExt
     {

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>LawPanel.ApiClient.DotNet</id>
-    <version>0.0.10</version>
+    <version>0.0.15</version>
     <title>.Net LawPanel API REST client</title>
     <authors>LawPanel Ltd.</authors>
     <owners>LawPanel Ltd.</owners>
@@ -11,11 +11,11 @@
     <projectUrl>http://developer.lawpanel.com/</projectUrl>
     <iconUrl>https://web.lawpanel.com/images/logo.jpg</iconUrl>
     <description>Typed .NET client for lawpanel.com REST APIs</description>
-    <releaseNotes>Changes into DTOs, Files, Folders, Clients methods, etc.</releaseNotes>
-    <copyright>Copyright 2017</copyright>
-    <tags>LawPanel, Law API, Trademarks, Services, lawyers</tags>
+    <releaseNotes>Changes to allow paging: skip, take, order.</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>Trademarks, lawyers, law, lawpanel, api</tags>
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="9.0.1" />
+      <dependency id="Newtonsoft.Json" version="10.0.3" />
     </dependencies>
   </metadata>
 </package>

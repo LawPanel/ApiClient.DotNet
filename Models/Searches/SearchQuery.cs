@@ -13,7 +13,6 @@ namespace LawPanel.ApiClient.Models.Searches
         public string ClassType         { get; set; }
         [JsonProperty("search_origin_id")]
         public string SearchOriginId    { get; set; }
-        public string FirmSearchId      { get; set; } // <-- TODO: Move it to another
 
         public SearchQuery()
         {

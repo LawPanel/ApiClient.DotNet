@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using LawPanel.ApiClient.Interfaces;
+using Newtonsoft.Json;
 
 namespace LawPanel.ApiClient.Models.Registry
 {
@@ -28,27 +29,43 @@ namespace LawPanel.ApiClient.Models.Registry
         public bool     HaveRules                       { get; set; }
 
         public string   Source                          { get; set; }
+
         public int      Term                            { get; set; }
+
         public string   FirstRenewalFrom                { get; set; }
+
         public string   RenewalQualifier                { get; set; }
+
         public int      RenewalPrePaymentPeriodOnMonths { get; set; }
+
         public int      GracePeriodOnMonths             { get; set; }
+
         public string   Penalty                         { get; set; }
+
         public int      SubSequentTerm                  { get; set; }
+
         public string   From                            { get; set; }
+
         public bool?    FeeForRegistration              { get; set; }
+
         public bool     ProofOfUseRequired              { get; set; }
+
         public string   Proof                           { get; set; }
+
         public int?     CancellationNonUseAfterYears    { get; set; }
+
         public string   UseRequirement                  { get; set; }
+
         public string   UseRequirementWhere             { get; set; }
 
+        [JsonIgnore]
+        public string   DataSources                     { get; set; }
 
-        // https://blackfish.teamworkpm.net/tasks/4423606
-        // Prefiero hacerlo así porque no se que puede pasar si lo cambio en la BBDD gracias a los enums
-        public string NameInUpperCase => Name.ToUpperInvariant();
+        public string   OfficialName                    { get; set; }
 
+        public string   WipoCode                        { get; set; }
 
+        public override bool ShouldSerializeEnable() { return false; }
 
     }
 }

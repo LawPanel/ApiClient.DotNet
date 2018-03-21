@@ -7,6 +7,7 @@ namespace LawPanel.ApiClient.Models.Firms
 {
     public class ClientCreateDto : Dto
     {
+        
         public ClientDto        Client              { get; set; }
         public IList<UserDto>   Users               { get; set; }
 

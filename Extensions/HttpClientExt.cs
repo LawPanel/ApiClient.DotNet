@@ -30,7 +30,18 @@ namespace LawPanel.ApiClient.Extensions
             return client.PostAsync(requestUri, httpContent).Result;
         }
 
-        public static Task<HttpResponseMessage> PutAsJsonAsyncWithSnakeCase(this HttpClient client, string requestUri, object value)
+
+        public static async Task<HttpResponseMessage> PostAsJsonWithSnakeCaseAsync(this HttpClient client, string requestUri, object value)
+        {
+            var asSnakeCase = value.AsSnakeCase();
+            var asSnakeCaseSerialized = JsonConvert.SerializeObject(asSnakeCase);
+
+            var httpContent = new StringContent(asSnakeCaseSerialized, Encoding.UTF8, ApplicationJson);
+
+            return await client.PostAsync(requestUri, httpContent);
+        }
+
+        public static Task<HttpResponseMessage> PutAsJsonAsyncWithSnakeCaseAsync(this HttpClient client, string requestUri, object value)
         {
             var asSnakeCase = value.AsSnakeCase();
             var asSnakeCaseSerialized = JsonConvert.SerializeObject(asSnakeCase);

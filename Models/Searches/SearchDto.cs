@@ -19,10 +19,11 @@ namespace LawPanel.ApiClient.Models.Searches
         [JsonProperty("end_time"), Display(Name = "[[[End time]]]")]
         public DateTime             EndTime     { get; set; }
         public int                  Score       { get; set; }
+        public string               Similarity  { get; set; }
         public string               Weightings  { get; set; }
         [Display(Name = "[[[Search type]]]")]
         public SearchType           Type        { get; set; }
-        public TrademarkRegistry    Registry    { get; set; }
+        public int                  Registry    { get; set; }
         public SearchStatus         Status      { get; set; }
 
         [JsonProperty("status_text"), Display(Name = "[[[Status text]]]")]

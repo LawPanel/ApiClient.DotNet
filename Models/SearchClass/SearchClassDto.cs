@@ -20,5 +20,7 @@ namespace LawPanel.ApiClient.Models.SearchClass
         public string   SearchClasses   { get; set; }
 
 
+        public override bool ShouldSerializeEnable(){ return false; }
+
     }
 }

@@ -1,6 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using LawPanel.ApiClient.Enums;
+using LawPanel.ApiClient.Enums.Permissions;
 using LawPanel.ApiClient.Interfaces;
+using LawPanel.ApiClient.Models.Identities;
 
 namespace LawPanel.ApiClient.Models.User
 {
@@ -37,7 +41,10 @@ namespace LawPanel.ApiClient.Models.User
 
         [Display(Name = "[[[User role]]]"), Required(ErrorMessage = "[[[User role is required]]]", AllowEmptyStrings = false)]
         public UserRole UserRole        { get; set; }
-        
+
+        [Display(Name = "[[[Last login date]]]")]
+        public DateTime? LastLoginDate  { get; set; }
+
         #region Properties used admin-side only, not visible for general users
 
         [Display(Name = "[[[Reset password?]]]")]
@@ -109,10 +116,14 @@ namespace LawPanel.ApiClient.Models.User
 
         public UserSettingsDto UserSettings { get; set; }
 
+        [Display(Name = "[[[Rules]]]")]
+        public List<ClaimDto> Claims { get; set; }
+
         public UserDto()
         {
             Enable = true;
             ShouldSerialize = false;
+            Claims = new List<ClaimDto>();
         }
     }
 }

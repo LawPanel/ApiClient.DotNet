@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace LawPanel.ApiClient.Models.FilesAndFolders
 {
@@ -13,5 +14,6 @@ namespace LawPanel.ApiClient.Models.FilesAndFolders
         public Guid     UserId          { get; set; } // Owner
         public Guid     FileStatusId    { get; set; }
         public Guid     FileTemplateId  { get; set; }
+        public List<string> ShareWiths { get; set; }
     }
 }

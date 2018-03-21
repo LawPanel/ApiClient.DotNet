@@ -23,6 +23,12 @@ namespace LawPanel.ApiClient.Models.Firms.Portfolio.CsvImporter
 
         #region Trademark
 
+        [Display(Name = "[[[Case reference]]]")]
+        public string                   CaseReference           { get; set; }
+
+        [Display(Name = "[[[Client reference]]]")]
+        public string                   ClientReference         { get; set; }
+
         [Display(Name = "[[[Application number]]]"), Required(ErrorMessage = "[[[Application number is required]]]", AllowEmptyStrings = false)]
         public string                   ApplicationNumber       { get; set; }
 
@@ -61,6 +67,12 @@ namespace LawPanel.ApiClient.Models.Firms.Portfolio.CsvImporter
 
         [Display(Name = "[[[Image URL]]]")]
         public string                   ImageUrl                { get; set; }
+
+        [Display(Name = "[[[Owner]]]")]
+        public string                   MarkOwner               { get; set; }
+        
+        [Display(Name = "[[[Notes]]]")]
+        public string                   Notes                   { get; set; }
 
         #endregion
 
