@@ -5,4 +5,5 @@
 /bin
 /bin/Release
 /obj
+/packages
 .vs
