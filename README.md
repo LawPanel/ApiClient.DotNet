@@ -69,11 +69,15 @@ If you do not specify these parameters, will receive all entities: the API clien
 
 You can set the order for the results specifying the field names and the order direction. By example:
 
-    var searchClasses = client.ReadSearchClasses(order: new List<ColumnOrder> { new ColumnOrder { Name = "name", Direction = OrderDirection.Desc } });
+    var searchClasses = client.ReadSearchClasses(order: new List<ColumnOrder> { 
+      new ColumnOrder { Name = "name", Direction = OrderDirection.Desc } 
+    });
 
 Will returns all search classes ordered by the field `name` in descending ordering. 
 
-**Important**: all field names should be writen with the `snake_case` convention. By example, if the field name is `Name` should be `name`, if it is `SearchClasses` you should write it as `search_classes`, etc.
+**Important**: all field names should be writen with the `snake_case` convention. 
+
+By example, if the field name is `Name` should be `name`, if it is `SearchClasses` you should write it as `search_classes`, etc.
 
 ## [Searches](https://developer.lawpanel.com/docs/services/57d1b3e7781258070026484d/operations/57d1b3e978125813d06c1c0c)
 
