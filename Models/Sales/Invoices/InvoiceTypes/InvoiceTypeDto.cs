@@ -10,5 +10,11 @@ namespace LawPanel.ApiClient.Models.Sales.Invoices.InvoiceTypes
         public string   Description     { get; set; }
         public string   LeadingZeros    { get; set; } // i.e. 000001
         public string   Prefix          { get; set; }
+
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

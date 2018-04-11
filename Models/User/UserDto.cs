@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using LawPanel.ApiClient.Enums;
 using LawPanel.ApiClient.Enums.Permissions;
 using LawPanel.ApiClient.Interfaces;
 using LawPanel.ApiClient.Models.Identities;
+using Newtonsoft.Json;
 
 namespace LawPanel.ApiClient.Models.User
 {
     public class UserDto : Dto, IIdentifiableDto
     {
+        [JsonIgnore]
         public bool ShouldSerialize;
 
         public string   Id              { get; set; }
@@ -124,6 +125,11 @@ namespace LawPanel.ApiClient.Models.User
             Enable = true;
             ShouldSerialize = false;
             Claims = new List<ClaimDto>();
+        }
+
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName} / {UserName} / {PhoneNumber}";
         }
     }
 }

@@ -15,5 +15,10 @@ namespace LawPanel.ApiClient.Models.ContactInfo
 
         [Display(Name = "[[[Source description]]]")]
         public string   Description { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

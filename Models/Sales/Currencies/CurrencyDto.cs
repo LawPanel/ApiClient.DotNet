@@ -8,5 +8,10 @@ namespace LawPanel.ApiClient.Models.Sales.Currencies
         public string           Name        { get; set; }
         public string           NameShort   { get; set; }
         public string           Symbol      { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Symbol} / {Name}";
+        }
     }
 }

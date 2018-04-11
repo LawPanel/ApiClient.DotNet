@@ -67,5 +67,9 @@ namespace LawPanel.ApiClient.Models.Registry
 
         public override bool ShouldSerializeEnable() { return false; }
 
+        public override string ToString()
+        {
+            return WipoCode;
+        }
     }
 }

@@ -29,5 +29,10 @@ namespace LawPanel.ApiClient.Models.Searches
         [JsonProperty("status_text"), Display(Name = "[[[Status text]]]")]
         public string               StatusText  { get; set; }
 
+
+        public override string ToString()
+        {
+            return $"Search term: {SearchTerm} / Classes: {Classes}";
+        }
     }
 }

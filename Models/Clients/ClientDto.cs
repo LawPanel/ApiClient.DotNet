@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using LawPanel.ApiClient.Attributes;
 using LawPanel.ApiClient.Interfaces;
 using LawPanel.ApiClient.Models.Helpers;
 
@@ -8,6 +9,7 @@ namespace LawPanel.ApiClient.Models.Clients
     {
         public string        Id                          { get; set; }
 
+        [ApiExportable(0)]
         [Display(Name = "[[[Client name]]]"), Required(ErrorMessage = "[[[Client name is required]]]", AllowEmptyStrings = false)]
         public string        Name                        { get; set; }
 
@@ -34,6 +36,12 @@ namespace LawPanel.ApiClient.Models.Clients
         {
             BillingAddress=new AddressDto();
             ContactAddress=new AddressDto();
+        }
+
+
+        public override string ToString()
+        {
+            return $"{Name} / {ContactEmail} / {ContactNumber}";
         }
     }
 }
