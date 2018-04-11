@@ -53,27 +53,49 @@ public class SearchDto : Dto, IIdentifiableDto
 ```
 ## Documentation
 
-These API examples follows [LawPanel's Firm API Documentation](https://developer.lawpanel.com/docs/services/57d1b3e7781258070026484d).
+These API examples follows [LawPanel's Firm API Documentation](https://developer.lawpanel.com/api_introduction).
+
+## Pagination
+
+If you are getting lists of entities using the `READ` methods (i.e. `ReadSearchClasses`) can filter results using the optional parameters `skip` and `take`.
+
+By example, to skip the first 5 search classes and get the next 10:
+
+    var searchClasses = lawpanel.ReadSearchClasses(5, 10);
+    
+If you do not specify these parameters, will receive all entities: the API client will execute all calls required to get all entities.
+
+## Ordering
+
+You can set the order for the results specifying the field names and the order direction. By example:
+
+    var searchClasses = lawpanel.ReadSearchClasses(order: new List<ColumnOrder> { 
+      new ColumnOrder { Name = "name", Direction = OrderDirection.Desc } 
+    });
+
+Will returns all search classes ordered by the field `name` in descending ordering. 
+
+**Important**: all field names should be writen with the `snake_case` convention. 
+
+By example, if the field name is `Name` should be `name`, if it is `SearchClasses` you should write it as `search_classes`, etc.
+
+
+# Examples
 
 ## [Searches](https://developer.lawpanel.com/docs/services/57d1b3e7781258070026484d/operations/57d1b3e978125813d06c1c0c)
 
 ### Creating a new trademark search 
 
 ```csharp
-var searchDto = lawpanel.CreateSearch(new SearchQuery
+var search = lawpanel.CreateSearch(new SearchQuery
 {
     Classes = "3,25,15",
     Registry = "UK",
-    ClassType = "SelectedClassesAndRelatedClasses",
-    Type = "1",
-    Weighting = "0,1",
-    SearchTerm = "the lawpanel",
-    SearchOriginId = "7C723DAA-9D75-433D-848D-A673000391DA"
+    SearchTerm = "lawpanel"
 });
 ```
 ### Retrieving a Search status
 
-
 ```csharp
-var searchStatusDto = lawpanel.GetStatus(searchDto.Id);
+var searchStatus = lawpanel.GetStatus(search.Id);
 ```
