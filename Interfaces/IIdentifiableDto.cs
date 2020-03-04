@@ -1,7 +1,6 @@
 ﻿namespace LawPanel.ApiClient.Interfaces
 {
-    public interface IIdentifiableDto 
+    public interface IIdentifiableDto : IEntityWithId<string>
     {
-        string Id { get; set; }
     }
 }

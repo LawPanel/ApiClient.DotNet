@@ -1,12 +1,15 @@
-﻿namespace LawPanel.ApiClient.Models.User
+﻿using System;
+using System.Collections.Generic;
+
+namespace LawPanel.ApiClient.Models.User
 {
     public class UserCreateUpdateDto : UserDto
     {
-        public string   ClaimsId        { get; set; }
+        public List<string>   ClaimsId        { get; set; }
 
         public UserCreateUpdateDto()
         {
-            ClaimsId = "[]";
+            ClaimsId = new List<string>();
         }
         
     }

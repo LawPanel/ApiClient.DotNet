@@ -8,6 +8,13 @@
 
         PortfolioReadOnly = 100,
         PortfolioInternalLimitedUser = 101,
-        PortfolioExternalLimitedUser = 102
+        PortfolioExternalLimitedUser = 102,
+
+        #region Client area 
+        ClientAreaReadOnly = 10000,
+        ClientAreaManageCasesNotes = 10001,
+        ClientAreaManageCasesAttachmentFiles = 10002,
+        ClientAreaManageCasesAttachmentLinks = 10003,
+        #endregion
     }
 }

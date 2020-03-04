@@ -8,8 +8,7 @@ namespace LawPanel.ApiClient.Models.Firms.Watchings
         
         public List<WatchingProcessCsvFilesError>       Errors          { get; set; }
         public List<WatchingProcessCsvFileProcessed>    ProcessedFiles  { get; set; }
-
-
+        
         #region Constructor
 
         public WatchingProcessCsvFilesResultDto(string compressedFileName)
@@ -21,7 +20,6 @@ namespace LawPanel.ApiClient.Models.Firms.Watchings
         }
 
         #endregion
-
 
         #region Helpers
 

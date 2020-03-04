@@ -19,6 +19,8 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,6 +31,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>false</UseVSHostingProcess>
+    <LangVersion>7.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,6 +40,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -47,10 +51,18 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>7.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Attributes\ApiExportableAttribute.cs" />
     <Compile Include="Attributes\DefaultOrderAttribute.cs" />
+    <Compile Include="Attributes\EndPointAttribute.cs" />
     <Compile Include="Base\HttpClientLawPanel.cs" />
+    <Compile Include="Constants\Ordering.cs" />
+    <Compile Include="Constants\TaskComparator.cs" />
+    <Compile Include="Constants\EndPoints.cs" />
+    <Compile Include="Enums\EntityType.cs" />
+    <Compile Include="Enums\UserInputTemplateComponentPermissionAction.cs" />
     <Compile Include="Enums\HttpMethod.cs" />
     <Compile Include="ContractResolvers\LowerCamelCasePropertyNamesContractResolver.cs" />
     <Compile Include="ContractResolvers\SnakeCasePropertyNamesContractResolver.cs" />
@@ -59,10 +71,24 @@
     <Compile Include="Extensions\DtoExt.cs" />
     <Compile Include="Extensions\FileDtoExt.cs" />
     <Compile Include="Extensions\FileUpdateDtoExt.cs" />
+    <Compile Include="Extensions\LongExt.cs" />
+    <Compile Include="Extensions\IEnumerableExt.cs" />
+    <Compile Include="Interfaces\IEntityWithId.cs" />
     <Compile Include="Models\ApiQuery\ApiQueryResponse.cs" />
     <Compile Include="Models\ApiQuery\ApiQueryResponseHeader.cs" />
     <Compile Include="Models\ApiQuery\LawPanel\ColumnOrder.cs" />
     <Compile Include="Models\ApiQuery\LawPanel\LawPanelApiResponse.cs" />
+    <Compile Include="Models\BatchTasks\BatchTaskActionAvailableDto.cs" />
+    <Compile Include="Models\BatchTasks\BatchTaskActionParamAvailableDto.cs" />
+    <Compile Include="Models\BatchTasks\BatchTaskCreateSpecialActionDto.cs" />
+    <Compile Include="Models\BatchTasks\BatchTaskCreatePropertyDto.cs" />
+    <Compile Include="Models\BatchTasks\BatchTaskPropertyAvailableDto.cs" />
+    <Compile Include="Models\BatchTasks\BatchTaskPropertyDto.cs" />
+    <Compile Include="Models\BatchTasks\BatchTasksAvailableDto.cs" />
+    <Compile Include="Models\BatchTasks\BatchTaskSpecialActionParamDto.cs" />
+    <Compile Include="Models\Clients\ClientReadDto.cs" />
+    <Compile Include="Models\Clients\ClientTypeDto.cs" />
+    <Compile Include="Models\Common\PropertyChangedDto.cs" />
     <Compile Include="Models\Communications\CommunicationChannelDto.cs" />
     <Compile Include="Models\Communications\CommunicationMessageDto.cs" />
     <Compile Include="Models\DataTables\DataTablesColumn.cs" />
@@ -72,21 +98,93 @@
     <Compile Include="Models\DataTables\DataTablesSearch.cs" />
     <Compile Include="Models\ApiQuery\DataTables\DataTablesServerSideResponse.cs" />
     <Compile Include="Models\Dto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileCloneCreateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FilterByTemplateFieldsDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FirmAttachmentUpdateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FirmAttachmentCreateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FirmAttachmentDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileEventReadDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileOpens\FileOpenCreateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileOpens\FileOpenReadDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileOpens\FileOpenDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileOpens\FileOpenUpdateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FilePortfolios\FilePortfolioCreateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FilePortfolios\FilePortfolioDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FilePortfolios\FilePortfolioRoleDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FilePortfolios\FilePortfolioUpdateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileClients\FileClientCreateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileClients\FileClientRoleDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileClients\FileClientUpdateDto.cs" />
     <Compile Include="Models\FilesAndFolders\FileLinkCreateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileClients\FileClientDto.cs" />
     <Compile Include="Models\FilesAndFolders\FileLinkDto.cs" />
     <Compile Include="Models\FilesAndFolders\FileLinkUpdateDto.cs" />
     <Compile Include="Models\FilesAndFolders\FileNoteCreateDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileReadTmdDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileStandardLetterUsRegistrationDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileStandardLetterApplicationEmailDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileStandardLetterDto.cs" />
     <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\IComponentDefinition.cs" />
     <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\CheckboxesWithText\CheckboxWithTextDefinitionDto.cs" />
     <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\CheckboxesWithText\CheckboxWithTextValueDto.cs" />
     <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\OptionsWithText\OptionsWithTextDefinitionDto.cs" />
     <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\OptionsWithText\OptionsWithTextValueDto.cs" />
     <Compile Include="Models\FilesAndFolders\FileTemplates\ComponentDefinitions\SelectsFromList\SelectItemFromListDefinitionDto.cs" />
+    <Compile Include="Models\FilesAndFolders\FileTemplates\FileTemplateReadDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\FirmPortfolioBundleComponent.cs" />
+    <Compile Include="Models\UserInputs\UserInputComponentCreateUpdateDto.cs" />
+    <Compile Include="Models\UserInputs\UserInputComponentDto.cs" />
+    <Compile Include="Models\UserInputs\UserInputComponentRepresentationDto.cs" />
+    <Compile Include="Models\UserInputs\UserInputUpdateDto.cs" />
+    <Compile Include="Models\UserInputs\UserInputCreateDto.cs" />
+    <Compile Include="Models\UserInputs\UserInputDto.cs" />
+    <Compile Include="Models\UserInputs\UserInputReadDto.cs" />
+    <Compile Include="Models\UserInputTemplates\UserInputTemplateComponentDto.cs" />
+    <Compile Include="Models\UserInputTemplates\UserInputTemplateComponentPermissionDto.cs" />
+    <Compile Include="Models\UserInputTemplates\UserInputTemplateDto.cs" />
+    <Compile Include="Models\UserInputTemplates\UserInputTemplateReadDto.cs" />
+    <Compile Include="Models\Filters\FilterExpressionDto.cs" />
+    <Compile Include="Models\Filters\FilterCreateDto.cs" />
+    <Compile Include="Models\Filters\FilterDefinitionDto.cs" />
+    <Compile Include="Models\Filters\FilterDto.cs" />
+    <Compile Include="Models\Filters\FilterExpressionsGroupDto.cs" />
+    <Compile Include="Models\Filters\FilterReadDto.cs" />
+    <Compile Include="Models\Filters\FilterUpdateDto.cs" />
+    <Compile Include="Models\FirmStatistics\DetailsByRegistry.cs" />
     <Compile Include="Models\FirmStatistics\LeadsByDate.cs" />
     <Compile Include="Models\Firms\ClientUpdateDto.cs" />
+    <Compile Include="Models\Firms\FirmPlanDto.cs" />
     <Compile Include="Models\Firms\Portfolio\AddBundleApiCallDto.cs" />
     <Compile Include="Models\Firms\Portfolio\AddBundleErrorDto.cs" />
     <Compile Include="Models\Firms\Portfolio\AddBundleResultReportDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\FirmPortfolioOneLinePerClassDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\FirmPortfolioOneLineDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\Reports\FirmPortfolioHistoryReportDetailDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\Reports\FirmPortfolioHistoryReportDetailPropertyDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\Reports\FirmPortfolioHistoryReportDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\UpdatesFromIpo\FirmPortfolioUpdateFromIpoDetailDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\UpdatesFromIpo\FirmPortfolioUpdateFromIpoDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\UpdatesFromIpo\FirmPortfolioUpdateFromIpoResultDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\UpdatesFromIpo\FirmPortfolioUpdateFromIpoUpdateDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\UpdatesFromIpo\FirmPortfolioUpdateFromIpoCreateDto.cs" />
+    <Compile Include="Models\Firms\Portfolio\UpdatesFromIpo\FirmPortfolioUpdateFromIpoReadDto.cs" />
+    <Compile Include="Models\Flatteneds\FlattenedDto.cs" />
+    <Compile Include="Models\GoodAndServices\GaSCreateDto.cs" />
+    <Compile Include="Models\GoodAndServices\GaSDto.cs" />
+    <Compile Include="Models\GoodAndServices\GaSReadDto.cs" />
+    <Compile Include="Models\Helpers\LawPanelNewsType\LawPanelNewsTypeCreateDto.cs" />
+    <Compile Include="Models\Helpers\LawPanelNewsType\LawPanelNewsTypeReadDto.cs" />
+    <Compile Include="Models\Helpers\LawPanelNewsType\LawPanelNewsTypeDto.cs" />
+    <Compile Include="Models\Helpers\LawPanelNewsType\LawPanelNewsTypeUpdateDto.cs" />
+    <Compile Include="Models\Helpers\LawPanelNews\LawPanelNewsCreateDto.cs" />
+    <Compile Include="Models\Helpers\LawPanelNews\LawPanelNewsDto.cs" />
+    <Compile Include="Models\Helpers\LawPanelNews\LawPanelNewsReadDto.cs" />
+    <Compile Include="Models\Helpers\LawPanelNews\LawPanelNewsUpdateDto.cs" />
+    <Compile Include="Models\Helpers\UserLinks\UserLinkCreateDto.cs" />
+    <Compile Include="Models\Helpers\UserLinks\UserLinkDto.cs" />
+    <Compile Include="Models\Helpers\UserLinks\UserLinkReadDto.cs" />
+    <Compile Include="Models\Helpers\UserLinks\UserLinkUpdateDto.cs" />
+    <Compile Include="Models\Helpers\PropertyChangedDto.cs" />
     <Compile Include="Models\Helpers\HistoryDataDto.cs" />
     <Compile Include="Models\Firms\FirmReadDto.cs" />
     <Compile Include="Models\Firms\FirmSearch\FirmSearchReadDto.cs" />
@@ -101,7 +199,6 @@
     <Compile Include="Models\Helpers\ProcessesStatus\ProcessStatusDto.cs" />
     <Compile Include="Models\Helpers\ProcessesStatus\ProcessStatusHistoryItem.cs" />
     <Compile Include="Models\Helpers\ProcessesStatus\ProcessStatusSummary.cs" />
-    <Compile Include="Models\Helpers\ShareWithDto.cs" />
     <Compile Include="Models\Firms\Watchings\WatchingHistoryDto.cs" />
     <Compile Include="Models\Firms\Watchings\WatchingProcessCsvFileProcessed.cs" />
     <Compile Include="Models\Firms\Watchings\WatchingProcessCsvFilesError.cs" />
@@ -162,12 +259,34 @@
     <Compile Include="Models\Helpers\EmailExtractedDto.cs" />
     <Compile Include="Models\Identities\ClaimDto.cs" />
     <Compile Include="Models\Identities\ClaimTargetDto.cs" />
+    <Compile Include="Models\Reports\ReportCreateDto.cs" />
+    <Compile Include="Models\Reports\ReportDto.cs" />
+    <Compile Include="Models\Reports\ReportAvailableDto.cs" />
+    <Compile Include="Models\Reports\ReportReadDto.cs" />
+    <Compile Include="Models\Reports\ReportUpdateDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskDeadLineTypeDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskReminderTemplateCreateDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskReminderTemplateUpdateDto.cs" />
+    <Compile Include="Models\TrademarksTypes\TrademarkTypeCreateDto.cs" />
+    <Compile Include="Models\TrademarksTypes\TrademarkTypeDto.cs" />
+    <Compile Include="Models\TrademarksTypes\TrademarkTypeReadDto.cs" />
+    <Compile Include="Models\TrademarksTypes\TrademarkTypeUpdateDto.cs" />
     <Compile Include="Models\Registry\RegistryReadDto.cs" />
-    <Compile Include="Models\Thirds\Markify\Logo.cs" />
-    <Compile Include="Models\Thirds\Markify\Meta.cs" />
-    <Compile Include="Models\Thirds\Markify\PriorityDto.cs" />
-    <Compile Include="Models\Thirds\Markify\Response.cs" />
-    <Compile Include="Models\Thirds\Markify\Result.cs" />
+    <Compile Include="Models\TaskReminders\TaskDeadLineCreateDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskDeadLineDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskCreateDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskDeadLineReadDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskReminderCreateDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskReadDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskDeadLineUpdateDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskReminderTemplateDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskReminderUpdatedEventDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskUpdateDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskReminderUpdateDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskReminderDto.cs" />
+    <Compile Include="Models\TaskReminders\TaskReminderReadDto.cs" />
+    <Compile Include="Models\Trademarks\PriorityDto.cs" />
     <Compile Include="Models\Sales\Invoices\InvoiceEntities\InvoiceEntityDefinitionDto.cs" />
     <Compile Include="Models\Sales\Invoices\InvoiceEntities\InvoiceEntityInstanceDto.cs" />
     <Compile Include="Models\Sales\Invoices\InvoiceEntities\InvoiceEntityInstanceFilterDto.cs" />
@@ -310,20 +429,37 @@
     <Compile Include="Models\Templates\BootstrapTrees\BootstrapTreeLeaf.cs" />
     <Compile Include="Models\Templates\BootstrapTrees\BootstrapTreeLeafState.cs" />
     <Compile Include="Models\Templates\TemplateDto.cs" />
+    <Compile Include="Models\Trademarks\TrademarkCloneCreateDto.cs" />
     <Compile Include="Models\Trademarks\SearchForPortfolioDto.cs" />
     <Compile Include="Models\Trademarks\TrademarkDetailsDto.cs" />
     <Compile Include="Models\Trademarks\TrademarkReadDto.cs" />
     <Compile Include="Models\Trademarks\TrademarkDto.cs" />
+    <Compile Include="Models\RegistrationTypes\RegistrationTypeCreateDto.cs" />
+    <Compile Include="Models\RegistrationTypes\RegistrationTypeDto.cs" />
+    <Compile Include="Models\RegistrationTypes\RegistrationTypeReadDto.cs" />
+    <Compile Include="Models\RegistrationTypes\RegistrationTypeUpdateDto.cs" />
+    <Compile Include="Models\BatchTasks\BatchTaskCreateDto.cs" />
+    <Compile Include="Models\BatchTasks\BatchTaskDetailDto.cs" />
+    <Compile Include="Models\BatchTasks\BatchTaskDto.cs" />
+    <Compile Include="Models\BatchTasks\BatchTaskReadDto.cs" />
+    <Compile Include="Models\BatchTasks\BatchTaskResultDto.cs" />
+    <Compile Include="Models\BatchTasks\BatchTaskUpdateDto.cs" />
+    <Compile Include="Models\UserTypes\UserTypeDto.cs" />
+    <Compile Include="Models\User\UserInviteDto.cs" />
+    <Compile Include="Models\User\UserBaseDto.cs" />
     <Compile Include="Models\User\UserCreateUpdateDto.cs" />
     <Compile Include="Models\User\UserDto.cs" />
     <Compile Include="Models\User\UserLoginDetailsDto.cs" />
+    <Compile Include="Models\User\UserReadDto.cs" />
     <Compile Include="Models\User\UserSettingsDto.cs" />
     <Compile Include="Models\Watchings\WatchingBundleDto.cs" />
     <Compile Include="Models\Watchings\WatchingCreateDto.cs" />
+    <Compile Include="Models\Watchings\WatchingReadDto.cs" />
     <Compile Include="Models\Watchings\WatchingDto.cs" />
     <Compile Include="Models\Watchings\WatchingSearch.cs" />
     <Compile Include="Models\Watchings\WatchingUpdateDto.cs" />
     <Compile Include="Models\Watchings\WatchingUserSettingsDto.cs" />
+    <Compile Include="Models\Web\WebFileStickedNoteDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -331,15 +467,24 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.12.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Annotations">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\v4.5\Profile\Profile7\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enums\Tasks\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

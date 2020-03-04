@@ -1,9 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using LawPanel.ApiClient.Attributes;
+using LawPanel.ApiClient.Constants;
 using LawPanel.ApiClient.Interfaces;
 using Newtonsoft.Json;
 
 namespace LawPanel.ApiClient.Models.Registry
 {
+    [EndPoint(EndPoints.registry)]
     public class RegistryDto : Dto , IIdentifiableDto
     {
         public string   Id                              { get; set; }
@@ -65,11 +68,14 @@ namespace LawPanel.ApiClient.Models.Registry
 
         public string   WipoCode                        { get; set; }
 
+        public string   AlternativeNames                { get; set; }
+
+
         public override bool ShouldSerializeEnable() { return false; }
 
         public override string ToString()
         {
-            return WipoCode;
+            return $"{Name} - {Description} - {WipoCode} - {OfficialName}";
         }
     }
 }

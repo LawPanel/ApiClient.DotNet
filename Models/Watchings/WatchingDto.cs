@@ -14,14 +14,13 @@ namespace LawPanel.ApiClient.Models.Watchings
 
         public DateTime     Created                             { get; set; }
 
-        [Display(Name = "[[[User]]]"), Required(ErrorMessage = "[[[User is required]]]", AllowEmptyStrings = false)]
+        [Display(Name = "[[[Responsible]]]"), Required(ErrorMessage = "[[[User responsible is required]]]", AllowEmptyStrings = false)]
         public string       UserId                              { get; set; }
         public string       UserName                            { get; set; }
 
 
         [Display(Name = "[[[Sensitivity]]]"), Required(ErrorMessage = "[[[Sensitivity is required]]]", AllowEmptyStrings = false)]
         public int          Sensitivity                         { get; set; }
-
 
         [Display(Name = "[[[Application number]]]"), Required(ErrorMessage = "[[[Application number is required]]]", AllowEmptyStrings = false)]
         public string       ApplicationNumber                   { get; set; }
@@ -54,11 +53,12 @@ namespace LawPanel.ApiClient.Models.Watchings
         [Display(Name = "[[[Owner]]]"), Required(ErrorMessage = "[[[Owner is required]]]", AllowEmptyStrings = true)]
         public string       Owner                               { get; set; }
 
-        #region Markify
+        #region DataSource
         public int          WatchId                             { get; set; }
         public string       OrderNumber                         { get; set; }
         #endregion
 
+        [Display(Name = "[[[Trademark]]]"), Required(ErrorMessage = "[[[Trademark is required]]]", AllowEmptyStrings = false)]
         public string       FirmPortfolioId                     { get; set; }
 
         public int          InterestingWatchingHistoryRecords   { get; set; }

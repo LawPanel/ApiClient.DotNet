@@ -30,5 +30,7 @@ namespace LawPanel.ApiClient.Models.Sales.Payments
 
         public bool                                     Capture                         { get; set; }
 
+        public int?                                     PaymentStatus                   { get; set; }
+
     }
 }

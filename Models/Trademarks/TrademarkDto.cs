@@ -9,13 +9,23 @@ namespace LawPanel.ApiClient.Models.Trademarks
 {
     public class TrademarkDto : Dto, IIdentifiableDto
     {
-        public string                           Id                  {
-                                                                        get { return $"{ApplicationNumber}|{Registry}".ToHexString(); }
-                                                                        set { }
-                                                                    } // Thx Luis, you are my hero! #@!%&&!!!
+        private string IdWithExtraDetails { get; set; }
+
+        public string Id                  
+        {
+            get => string.IsNullOrEmpty(IdWithExtraDetails) ? $"{ApplicationNumber}|{Registry}|{RegistrationNumber}|{MarkText}".ToHexString() : IdWithExtraDetails;
+            set
+            {
+                var normalId = $"{ApplicationNumber}|{Registry}|{RegistrationNumber}|{MarkText}";
+                IdWithExtraDetails = $"{normalId}|{value}".ToHexString();
+            }
+        } 
 
         [JsonProperty("application_number")]
         public string                           ApplicationNumber   { get; set; }
+
+        public string                           RegistrationNumber  { get; set; }
+
         [JsonProperty("registration_date")]
         public DateTime?                        RegistrationDate    { set; get; }
         [JsonProperty("application_date")]

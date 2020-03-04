@@ -7,6 +7,5 @@ namespace LawPanel.ApiClient.Models.BrandMonitoring
         public string Id        { get; set; }
         public string BrandName { get; set; }
         public string Site      { get; set; }
-        
     }
 }

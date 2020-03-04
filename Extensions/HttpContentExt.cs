@@ -119,7 +119,7 @@ namespace LawPanel.ApiClient.Extensions
                             ContractResolver = LowerCamelCasePropertyNamesContractResolver
                         };
 
-                        toReturn = (TEntity)serializer.Deserialize(jr, typeof(TEntity));
+                        toReturn = (TEntity) serializer.Deserialize(jr, typeof(TEntity));
                     }
                 }
             }

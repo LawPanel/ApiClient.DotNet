@@ -8,9 +8,9 @@ namespace LawPanel.ApiClient.Models.FirmStatistics
         public List<SearchesByDate>             LastMonthSearches               { get; set; }
         public List<ClassNumbersRequested>      LastMonthClassNumbersRequested  { get; set; }
         public List<KeyValuePair<string, int>>  LastMonthSearchesSources        { get; set; }
-        
         public List<LeadsByDate>                LastMonthClientsLeads           { get; set; }
         public List<string>                     LastMonthClientsLeadsOrigin     { get; set; }
+        public List<DetailsByRegistry>          DetailsByRegistries             { get; set; }
 
         public DashboardStatisticsModel()
         {
@@ -20,6 +20,7 @@ namespace LawPanel.ApiClient.Models.FirmStatistics
             LastMonthClientsLeads = new List<LeadsByDate>();
             LastMonthClientsLeadsOrigin = new List<string>();
             LastMonthSearchesRegistries = new List<string>();
+            DetailsByRegistries = new List<DetailsByRegistry>();
         }
     }
 }

@@ -41,5 +41,13 @@ namespace LawPanel.ApiClient.Models.Sales.Invoices
         {
             return string.Format("[[[Client: %0 - Type: %1 - Number: %2|||{0}|||{1}|||{2}]]]", Client.Name, InvoiceType.Name, InvoiceNumber);
         }
+
+        public InvoiceDto()
+        {
+            InvoiceItems = new List<InvoiceItemDto>();
+            Payments = new List<PaymentDto>();
+            Client = new ClientDto();
+            InvoiceType = new InvoiceTypeDto();
+        }
     }
 }

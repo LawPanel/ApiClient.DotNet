@@ -46,6 +46,41 @@ namespace LawPanel.ApiClient.Models.Firms.Portfolio.CsvImporter
         [Display(Name = "[[[Notes]]]")]
         public string                   Notes                   { get; set; }
 
+        #region New fields https://blackfish.teamworkpm.net/#/tasklists/926333
+
+        [Display(Name = "[[[Registration number]]]")]
+        public string RegistrationNumber { get; set; }
+
+        [Display(Name = "[[[Office action date]]]")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? OfficeActionDate { get; set; }
+
+        [Display(Name = "[[[Grant date]]]")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? GrantDate { get; set; }
+
+        [Display(Name = "[[[Final office action date]]]")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? FinalOfficeActionDate { get; set; }
+
+        [Display(Name = "[[[Declaration date]]]")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? DeclarationDate { get; set; }
+
+        [Display(Name = "[[[Publication date]]]")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? PublicationDate { get; set; }
+
+        [Display(Name = "[[[Publication notes]]]")]
+        public string PublicationNotes { get; set; }
+
+        #endregion
+
         #endregion
     }
 }

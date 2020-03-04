@@ -50,14 +50,12 @@ namespace LawPanel.ApiClient
     {
         #region Properties
 
-        public static HttpClientLawPanel HttpClient;
-
-        private const string SubscriptionKeyParamName = "subscription-key";
-        private string ApiUrl { get; set; }
-        private string SubscriptionKey { get; set; }
-
-        private AuthCookieModel AuthCookieModel { get; set; }
-        public bool UseProxy { get; set; }
+        public static   HttpClientLawPanel  HttpClient;
+        private const   string              SubscriptionKeyParamName = "subscription-key";
+        private         string              ApiUrl                      { get; set; }
+        private         string              SubscriptionKey             { get; set; }
+        private         AuthCookieModel     AuthCookieModel             { get; set; }
+        public          bool                UseProxy                    { get; set; }
 
         #endregion
 
@@ -119,7 +117,7 @@ namespace LawPanel.ApiClient
 
         public TrademarkDto TrademarkByApplicationNumber(string registry, string applicationNumber)
         {
-            return Execute<TrademarkDto>($"trademark/{registry}/{applicationNumber}", HttpMethod.Get, null, HttpStatusCode.OK);
+            return Execute<TrademarkDto>($"trademark/details/{registry}/{applicationNumber}", HttpMethod.Get, null, HttpStatusCode.OK);
         }
 
         public IEnumerable<TrademarkDto> TrademarkSearchByText(string txt)
@@ -194,11 +192,6 @@ namespace LawPanel.ApiClient
             return Execute<ResultDto>($"watching/{id}", HttpMethod.Delete, null, HttpStatusCode.OK);
         }
 
-        public void CreateWatchingBundle(List<WatchingBundleDto> watchingBundles)
-        {
-            Execute<object>("watching/addbundle", HttpMethod.Post, watchingBundles, HttpStatusCode.Created);
-        }
-
         #endregion
 
         #region FirmPortfolio
@@ -250,20 +243,6 @@ namespace LawPanel.ApiClient
         public ResultDto DeleteWatchingUserSettings(Guid id)
         {
             return Execute<ResultDto>($"watchingusersettings/{id}", HttpMethod.Delete, null, HttpStatusCode.OK);
-        }
-
-        #endregion
-
-        #region Firms
-
-        /// <summary>
-        /// Returns the API key for current user
-        /// </summary>
-        /// <returns></returns>
-        public string GetFirmApiKey()
-        {
-            var url = "firms/apikey?firmId=" + default(Guid);
-            return Execute<string>(url, HttpMethod.Get, null, HttpStatusCode.OK);
         }
 
         #endregion
@@ -378,7 +357,7 @@ namespace LawPanel.ApiClient
 
         public IdentityDto GetUserDetails()
         {
-            return Execute<IdentityDto>("users/getuserdetails", HttpMethod.Get, null, HttpStatusCode.OK);
+            return Execute<IdentityDto>($"{EndPoints.user}/getuserdetails", HttpMethod.Get, null, HttpStatusCode.OK);
         }
 
         public AuthCookieModel SetUserIdentity(LoginBindingModel loginBindingModel)
@@ -469,27 +448,41 @@ namespace LawPanel.ApiClient
 
         public ClientDto CreateClient(ClientCreateDto clientCreateDto)
         {
-            return Execute<ClientDto>("client", HttpMethod.Post, clientCreateDto, HttpStatusCode.Created);
+            return Execute<ClientDto>(EndPoints.client, HttpMethod.Post, clientCreateDto, HttpStatusCode.Created);
         }
 
         public IEnumerable<FirmClientDto> ReadClient(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true)
         {
-            return Read<FirmClientDto>("client", HttpMethod.Get, null, skip, take, order, true);
+            return Read<FirmClientDto>(EndPoints.client, HttpMethod.Get, null, skip, take, order, true);
         }
 
         public ClientDto ReadClient(Guid id)
         {
-            return Execute<ClientDto>($"client/{id}", HttpMethod.Get, null, HttpStatusCode.OK);
+            return Execute<ClientDto>($"{EndPoints.client}/{id}", HttpMethod.Get, null, HttpStatusCode.OK);
         }
 
         public ResultDto UpdateClient(ClientUpdateDto clientUpdate)
         {
-            return Execute<ResultDto>("client", HttpMethod.Put, clientUpdate, HttpStatusCode.OK);
+            return Execute<ResultDto>(EndPoints.client, HttpMethod.Put, clientUpdate, HttpStatusCode.OK);
         }
 
         public ResultDto DeleteClient(Guid id)
         {
-            return Execute<ResultDto>($"client/{id}", HttpMethod.Delete, null, HttpStatusCode.OK);
+            return Execute<ResultDto>($"{EndPoints.client}/{id}", HttpMethod.Delete, null, HttpStatusCode.OK);
+        }
+
+        #endregion
+
+        #region ClientTypes
+
+        public IEnumerable<ClientTypeDto> ReadClientType(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true)
+        {
+            return Read<ClientTypeDto>(EndPoints.clienttype, HttpMethod.Get, null, skip, take, order, true);
+        }
+
+        public ClientTypeDto ReadClientType(Guid id)
+        {
+            return Execute<ClientTypeDto>($"{EndPoints.clienttype}/{id}", HttpMethod.Get, null, HttpStatusCode.OK);
         }
 
         #endregion
@@ -498,22 +491,22 @@ namespace LawPanel.ApiClient
 
         public ClientUserDto CreateClientUser(ClientUserDto firmClient)
         {
-            return Execute<ClientUserDto>("clientuser", HttpMethod.Post, firmClient, HttpStatusCode.Created);
+            return Execute<ClientUserDto>(EndPoints.clientuser, HttpMethod.Post, firmClient, HttpStatusCode.Created);
         }
 
         public IEnumerable<ClientUserDto> ReadClientUser(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true)
         {
-            return Read<ClientUserDto>("clientuser", HttpMethod.Get, null, skip, take, order, true);
+            return Read<ClientUserDto>(EndPoints.clientuser, HttpMethod.Get, null, skip, take, order, true);
         }
 
         public ResultDto UpdateClient(ClientUserDto clientUser)
         {
-            return Execute<ResultDto>($"clientuser/{clientUser.Id}", HttpMethod.Put, clientUser, HttpStatusCode.OK);
+            return Execute<ResultDto>($"{EndPoints.clientuser}/{clientUser.Id}", HttpMethod.Put, clientUser, HttpStatusCode.OK);
         }
 
         public ResultDto DeleteClientUser(Guid id)
         {
-            return Execute<ResultDto>($"clientuser/{id}", HttpMethod.Delete, null, HttpStatusCode.OK);
+            return Execute<ResultDto>($"{EndPoints.clientuser}/{id}", HttpMethod.Delete, null, HttpStatusCode.OK);
         }
 
         #endregion
@@ -593,17 +586,17 @@ namespace LawPanel.ApiClient
 
         public FileDto CreateFile(FileCreateDto fileCreateDto)
         {
-            return Execute<FileDto>("file", HttpMethod.Post, fileCreateDto, HttpStatusCode.Created);
+            return Execute<FileDto>(EndPoints.file, HttpMethod.Post, fileCreateDto, HttpStatusCode.Created);
         }
 
         public FileDto ReadFile(Guid fileId)
         {
-            return Execute<FileDto>($"file/{fileId}", HttpMethod.Get, null, HttpStatusCode.OK);
+            return Execute<FileDto>($"{EndPoints.file}/{fileId}", HttpMethod.Get, null, HttpStatusCode.OK);
         }
 
         public IEnumerable<FileReadDto> ReadFiles(Guid? folderId, int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true)
         {
-            var url = "file";
+            var url = EndPoints.file;
 
             if (folderId.HasValue)
             {
@@ -612,19 +605,37 @@ namespace LawPanel.ApiClient
             return Read<FileReadDto>(url, HttpMethod.Get, null, skip, take, order, true);
         }
 
+        public IEnumerable<FileReadDto> ReadFiles(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true)
+        {
+            var url = "firmfolder";
+            return Read<FileReadDto>(url, HttpMethod.Get, null, skip, take, order, true);
+        }
+
+        public IEnumerable<FileReadTmdDto> ReadFilesTmd(Guid lawpanelClientId)
+        {
+            var url = $"{EndPoints.file}/{lawpanelClientId}/filestmd";
+            return Read<FileReadTmdDto>(url, HttpMethod.Get, null);
+        }
+
+        public FileReadTmdDto ReadFileTmd(Guid lawpanelFileId)
+        {
+            var url = $"{EndPoints.file}/{lawpanelFileId}/filetmd";
+            return Execute<FileReadTmdDto>(url, HttpMethod.Get, null, HttpStatusCode.OK);
+        }
+
         public ResultDto UpdateFile(FileUpdateDto fileUpdateDto)
         {
-            return Execute<ResultDto>("file", HttpMethod.Put, fileUpdateDto, HttpStatusCode.OK);
+            return Execute<ResultDto>(EndPoints.file, HttpMethod.Put, fileUpdateDto, HttpStatusCode.OK);
         }
 
         public ResultDto DeleteFile(Guid id)
         {
-            return Execute<ResultDto>($"file/{id}", HttpMethod.Delete, null, HttpStatusCode.OK);
+            return Execute<ResultDto>($"{EndPoints.file}/{id}", HttpMethod.Delete, null, HttpStatusCode.OK);
         }
 
         public ResultDto AddNoteIntoFile(Guid fileId, FileNoteCreateDto fileNoteCreate)
         {
-            return Execute<ResultDto>($"file/{fileId}/addnote", HttpMethod.Put, fileNoteCreate, HttpStatusCode.OK);
+            return Execute<ResultDto>($"{EndPoints.file}/{fileId}/addnote", HttpMethod.Put, fileNoteCreate, HttpStatusCode.OK);
         }
 
         #endregion
@@ -641,7 +652,7 @@ namespace LawPanel.ApiClient
             return Read<FileAttachmentDto>("fileattachment", HttpMethod.Get, null, skip, take, order, true);
         }
 
-        public ResultDto UpdateFile(FileAttachmentUpdateDto fileAttachmentUpdateDto)
+        public ResultDto UpdateFileAttachment(FileAttachmentUpdateDto fileAttachmentUpdateDto)
         {
             return Execute<ResultDto>("fileattachment", HttpMethod.Put, null, HttpStatusCode.OK);
         }
@@ -665,6 +676,11 @@ namespace LawPanel.ApiClient
             return Read<FileEventDto>($"fileevent/file/{fileId}", HttpMethod.Get, null, skip, take, order, true);
         }
 
+        public IEnumerable<FileEventDto> ReadFileEventsOfFirm(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true)
+        {
+            return Read<FileEventDto>($"fileevent/firm", HttpMethod.Get, null, skip, take, order, true);
+        }
+
         #endregion
 
         #region File status
@@ -680,7 +696,7 @@ namespace LawPanel.ApiClient
 
         public IEnumerable<FileTemplateDto> ReadFileTemplate(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true)
         {
-            return Read<FileTemplateDto>("firmfiletemplate", HttpMethod.Get, null, skip, take, order, true);
+            return Read<FileTemplateDto>(EndPoints.firmfiletemplate, HttpMethod.Get, null, skip, take, order, true);
         }
 
         #endregion
@@ -797,6 +813,13 @@ namespace LawPanel.ApiClient
             return Read<InvoiceItemReadDto>(url, HttpMethod.Get, null, skip, take, order, true);
         }
 
+        public IEnumerable<InvoiceItemReadDto> ReadInvoiceItem(Guid invoiceId, int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true)
+        {
+            var url = $"firminvoice/{invoiceId}/items";
+
+            return Read<InvoiceItemReadDto>(url, HttpMethod.Get, null, skip, take, order, true);
+        }
+
         public ResultDto UpdateInvoiceItem(InvoiceItemUpdateDto invoiceItemUpdate)
         {
             return Execute<ResultDto>($"invoiceitem/{invoiceItemUpdate.Id}", HttpMethod.Put, invoiceItemUpdate, HttpStatusCode.OK);
@@ -860,7 +883,7 @@ namespace LawPanel.ApiClient
                 invoiceIdParam = $"&InvoiceId={invoiceId}";
             }
 
-            var url = "firminvoice/";
+            var url = "firmpayment/";
             if (invoiceIdParam != string.Empty) url = $"{url}?{invoiceIdParam}";
 
             return Read<PaymentReadDto>(url, HttpMethod.Get, null, skip, take, order, true);
@@ -877,7 +900,7 @@ namespace LawPanel.ApiClient
 
         public SearchDto CreateSearch(SearchQuery search)
         {
-            return Execute<SearchDto>("search", HttpMethod.Post, search, HttpStatusCode.Created);
+            return Execute<SearchDto>("search/add", HttpMethod.Post, search, HttpStatusCode.Created);
         }
 
         public SearchDto GetSearch(Guid searchId)

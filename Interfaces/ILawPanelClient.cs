@@ -72,14 +72,11 @@ namespace LawPanel.ApiClient.Interfaces
         IEnumerable<WatchingDto>                        ReadWatchings(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
         ResultDto                                       UpdateWatching(WatchingDto watching);
         ResultDto                                       DeleteWatching(Guid id);
-        void                                            CreateWatchingBundle(List<WatchingBundleDto> watchingBundles);
 
         WatchingUserSettingsDto                         CreateWatchingUserSettings(WatchingUserSettingsDto watchingUserSettingsDto);
         WatchingUserSettingsDto                         ReadWatchingUserSettings();
         ResultDto                                       UpdateWatchingUserSettings(WatchingUserSettingsDto watchingUserSettingsDto);
         ResultDto                                       DeleteWatchingUserSettings(Guid id);
-
-        string                                          GetFirmApiKey();
 
         FirmPortfolioDto                                CreateFirmPortfolio(FirmPortfolioDto portfolio);
         IEnumerable<FirmPortfolioReadDto>               ReadFirmPortfolios(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
@@ -111,6 +108,10 @@ namespace LawPanel.ApiClient.Interfaces
         FileDto                                         CreateFile(FileCreateDto fileCreateDto);
         FileDto                                         ReadFile(Guid fileId);
         IEnumerable<FileReadDto>                        ReadFiles(Guid? folderId, int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
+        IEnumerable<FileReadDto>                        ReadFiles(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
+        IEnumerable<FileEventDto>                       ReadFileEventsOfFirm(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
+        IEnumerable<FileReadTmdDto>                     ReadFilesTmd(Guid lawpanelClientId);
+        FileReadTmdDto                                  ReadFileTmd(Guid lawpanelFileId);
         ResultDto                                       UpdateFile(FileUpdateDto fileUpdateDto);
         ResultDto                                       DeleteFile(Guid id);
 
@@ -118,7 +119,7 @@ namespace LawPanel.ApiClient.Interfaces
 
         FileAttachmentDto                               CreateFileAttachment(FileAttachmentCreateDto fileAttachmentCreateDto);
         IEnumerable<FileAttachmentDto>                  ReadFileAttachment(int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
-        ResultDto                                       UpdateFile(FileAttachmentUpdateDto fileAttachmentUpdateDto);
+        ResultDto                                       UpdateFileAttachment(FileAttachmentUpdateDto fileAttachmentUpdateDto);
         ResultDto                                       DeleteFileAttachment(Guid id);
 
         IEnumerable<FileEventForFolderDto>              ReadFileEventsOfFolder(Guid folderId, int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
@@ -134,11 +135,14 @@ namespace LawPanel.ApiClient.Interfaces
 
         InvoiceItemDto                                  CreateInvoiceItem(InvoiceItemCreateDto invoiceItemCreate);
         IEnumerable<InvoiceItemReadDto>                 ReadInvoiceItem(string entityType = null, Guid? entityId = null, int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
+
+        IEnumerable<InvoiceItemReadDto>                 ReadInvoiceItem(Guid invoiceId, int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
         ResultDto                                       UpdateInvoiceItem(InvoiceItemUpdateDto invoiceItemUpdate);
         ResultDto                                       DeleteInvoiceItem(Guid id);
 
         InvoiceDto                                      CreateInvoice(InvoiceCreateDto invoiceCreate);
         IEnumerable<InvoiceReadDto>                     ReadInvoice(string entityType = null, Guid? entityId = null, int skip = 0, int take = 0, List<ColumnOrder> order = null, bool all = true);
+
         ResultDto                                       UpdateInvoice(InvoiceUpdateDto invoiceUpdate);
         ResultDto                                       DeleteInvoice(Guid id);
 

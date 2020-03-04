@@ -114,21 +114,32 @@ namespace LawPanel.ApiClient.Models.Firms.Portfolio
             AddUsersId(Cancellation04, userIds);
         }
 
-        public void AddNotes(string notes)
+        public bool ThereIsReminderSelectedWithoutUser()
+        {
+            return 
+                string.IsNullOrEmpty(Renewal02.UserId) && Renewal02.Selected ||
+                string.IsNullOrEmpty(Renewal03.UserId) && Renewal03.Selected ||
+                string.IsNullOrEmpty(Renewal04.UserId) && Renewal04.Selected ||
+                string.IsNullOrEmpty(Renewal05.UserId) && Renewal05.Selected ||
+                string.IsNullOrEmpty(Renewal06.UserId) && Renewal06.Selected;
+
+        }
+
+        public void AddNotes(string notes, bool onlyIfEmpty = false)
         {
 
             if (string.IsNullOrEmpty(notes)) return;
 
-            AddNotes(Renewal01, notes);
-            AddNotes(Renewal02, notes);
-            AddNotes(Renewal03, notes);
-            AddNotes(Renewal04, notes);
-            AddNotes(Renewal05, notes);
-            AddNotes(Renewal06, notes);
-            AddNotes(Cancellation01, notes);
-            AddNotes(Cancellation02, notes);
-            AddNotes(Cancellation03, notes);
-            AddNotes(Cancellation04, notes);
+            AddNotes(Renewal01, notes, onlyIfEmpty);
+            AddNotes(Renewal02, notes, onlyIfEmpty);
+            AddNotes(Renewal03, notes, onlyIfEmpty);
+            AddNotes(Renewal04, notes, onlyIfEmpty);
+            AddNotes(Renewal05, notes, onlyIfEmpty);
+            AddNotes(Renewal06, notes, onlyIfEmpty);
+            AddNotes(Cancellation01, notes, onlyIfEmpty);
+            AddNotes(Cancellation02, notes, onlyIfEmpty);
+            AddNotes(Cancellation03, notes, onlyIfEmpty);
+            AddNotes(Cancellation04, notes, onlyIfEmpty);
         }
 
         public void SelectWhereDateIsOnTheFuture()
@@ -168,8 +179,11 @@ namespace LawPanel.ApiClient.Models.Firms.Portfolio
             }
         }
 
-        private static void AddNotes(FirmPortfolioReminderCommonDto firmPortfolioReminderCommon, string notes)
+        private static void AddNotes(FirmPortfolioReminderCommonDto firmPortfolioReminderCommon, string notes, bool onlyIfEmpty = false)
         {
+
+            if(onlyIfEmpty && !string.IsNullOrEmpty(firmPortfolioReminderCommon.Notes)) return;
+
             var isEmpty = string.IsNullOrEmpty(firmPortfolioReminderCommon.Notes);
             if (isEmpty) {
                 firmPortfolioReminderCommon.Notes = notes;

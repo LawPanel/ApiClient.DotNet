@@ -18,6 +18,7 @@ namespace LawPanel.ApiClient.Models.Firms.Portfolio
 
         public string Id                { get; set; }
         public string ApplicationNumber { get; set; }
+        public string MarkText          { get; set; }
         public string RegistryName      { get; set; }
         public string Step              { get; set; }
         public string Message           { get; set; }

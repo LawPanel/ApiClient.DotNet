@@ -8,11 +8,11 @@ namespace LawPanel.ApiClient.Models.Firms
         public DateTime     Created             { get; set; }
         public string       Currency            { get; set; }
         public string       Interval            { get; set; }
-        public int          IntervalCount       { get; set; }
+        public long         IntervalCount       { get; set; }
         public bool         LiveMode            { get; set; }
         public string       Name                { get; set; }
         public string       StatementDescriptor { get; set; }
-        public int?         TrialPeriodDays     { get; set; }
+        public long?        TrialPeriodDays     { get; set; }
         public bool         Paid                { get; set; }
         public DateTime?    ExpirationDate      { get; set; }
     }

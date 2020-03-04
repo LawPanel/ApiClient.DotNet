@@ -1,4 +1,5 @@
-﻿using LawPanel.ApiClient.Enums;
+﻿using System;
+using System.Collections.Generic;
 using LawPanel.ApiClient.Interfaces;
 using LawPanel.ApiClient.Models.User;
 
@@ -6,10 +7,17 @@ namespace LawPanel.ApiClient.Models.Clients
 {
     public class ClientUserDto : Dto, IIdentifiableDto
     {
-        public virtual string           Id              { get; set; }
-        public virtual ClientDto        Client          { get; set; }
-        public virtual UserDto          User            { get; set; }
-        public virtual PermissionType   PermissionType  { get; set; }
-        public virtual bool             IsYoti          { get; set; }
+        public string     Id       { get; set; }
+        public ClientDto  Client   { get; set; }
+        public UserDto    User     { get; set; }
+        public bool       IsYoti   { get; set; }
+        public List<string> ClaimsId { get; set; }
+
+        public ClientUserDto()
+        {
+            Client = new ClientDto();
+            User = new UserDto();
+            ClaimsId = new List<string>();
+        }
     }
 }

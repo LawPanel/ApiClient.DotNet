@@ -6,6 +6,7 @@ namespace LawPanel.ApiClient.Models.DataTables
     {
         public string                   Data                            { get; set; }
         public string                   Name                            { get; set; }
+        public int                      Number                          { get; set; }
         public bool                     Searchable                      { get; set; }
         public bool                     Orderable                       { get; set; }
         public bool                     SearchIntoPreprocess            { get; set; }

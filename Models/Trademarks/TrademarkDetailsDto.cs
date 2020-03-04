@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using LawPanel.ApiClient.Models.Thirds.Markify;
-using Newtonsoft.Json;
 
 namespace LawPanel.ApiClient.Models.Trademarks
 {

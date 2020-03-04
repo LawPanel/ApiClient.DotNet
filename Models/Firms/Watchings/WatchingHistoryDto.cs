@@ -13,6 +13,8 @@ namespace LawPanel.ApiClient.Models.Firms.Watchings
         public string   Id                      { get; set; }
         public long     UnixTimeStamp           { get; set; }
 
+        public string   ApplicationDate         { get; set; }
+        public string   ApplicationNumber       { get; set; }
         public string   ProviderId              { get; set; }
         public string   Trademark               { get; set; }
         public string   Classes                 { get; set; }
@@ -32,6 +34,11 @@ namespace LawPanel.ApiClient.Models.Firms.Watchings
         public string Rk()
         {
             return Id.Split(Convert.ToChar("|"))[1];
+        }
+
+        public string GetId()
+        {
+            return $"{Pk()}___{Rk()}";
         }
     }
 }

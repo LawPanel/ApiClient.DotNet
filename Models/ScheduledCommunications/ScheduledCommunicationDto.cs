@@ -22,6 +22,7 @@ namespace LawPanel.ApiClient.Models.ScheduledCommunications
         public bool                         ForceSystemAsRemitent   { get; set; } // When true communication should be send with SystemCommunicator as remitent
         public string                       PartitionKey            { get; set; }
         public string                       RowKey                  { get; set; }
+        public string                       CreatedBy               { get; set; }
 
 
         public override string ToString()

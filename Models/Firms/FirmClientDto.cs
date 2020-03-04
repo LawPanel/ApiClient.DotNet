@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using LawPanel.ApiClient.Attributes;
+using LawPanel.ApiClient.Constants;
 using LawPanel.ApiClient.Interfaces;
 using LawPanel.ApiClient.Models.Clients;
 using LawPanel.ApiClient.Models.User;
 
 namespace LawPanel.ApiClient.Models.Firms
 {
+    [EndPoint(EndPoints.firmclient)]
     public class FirmClientDto : Dto, IIdentifiableDto
     {
         public string           Id                  { get; set; }
@@ -18,6 +20,7 @@ namespace LawPanel.ApiClient.Models.Firms
 
         [ApiExportable(1)]
         public int              TotalUsers          { get; set; }
+        public int              TotalCases          { get; set; }
         public bool             IsDefaultForClient  { get; set; }
 
 
