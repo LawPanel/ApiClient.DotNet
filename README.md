@@ -1,10 +1,8 @@
 ![Logo and name](./logoAndName350x50.png)
 ====
+![Build](https://github.com/LawPanel/ApiClient.DotNet/workflows/Build/badge.svg?branch=master)
 
 This project contains a Portable Class Library containing a typed .NET client gateway for accessing [LawPanel's Firms REST API](https://developer.lawpanel.com/docs/services/).
-
-## Build status
-![Build](https://github.com/LawPanel/ApiClient.DotNet/workflows/Build/badge.svg?branch=master)
 
 ## Features
 
